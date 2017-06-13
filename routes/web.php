@@ -5,8 +5,8 @@ Route::get('/',"HomeController@index");
 
 // sementara | aslinya harus login
 Route::get('/dashboard',"HomeController@dashboard");
-Route::get('/members',"MemberController@index");
-Route::get('/vendors',"VendorController@index");
+Route::get('/members',"MemberController@index")->name("member.index");
+Route::get('/vendors',"VendorController@index")->name("vendor.index");
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
