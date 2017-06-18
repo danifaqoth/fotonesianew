@@ -7,6 +7,25 @@ Route::get('/',"HomeController@index");
 Route::get('/dashboard',"HomeController@dashboard");
 Route::get('/members',"MemberController@index")->name("member.index");
 Route::get('/vendors',"VendorController@index")->name("vendor.index");
+Route::get('members/profil',"MemberController@profil")->name('member.profil');
+Route::get('vendors/profil',"VendorController@profil")->name('vendor.profil');
+Route::get('vendors/album',"VendorController@album")->name('vendor.album');
+Route::get('vendors/profil/{id}/photos',"VendorController@getPhotos")->name('vendor.photos');
+
+// Route::get('/albums', "AlbumsController@index");
+// Route::get('/albums/create',"AlbumsController@create");
+// Route::get('/albums/{id}',"AlbumsController@show");
+// Route::post('/albums/store',"AlbumsController@store");
+// Route::delete('/albums/{id}',"AlbumsController@destroy");
+Route::resource('albums', "AlbumsController");
+
+Route::get('/photos/create/{id}',"PhotosController@create");
+Route::post('/photos/store',"PhotosController@store")->name('photo.store');
+
+Route::get('/photos/{id}',"PhotosController@show");
+Route::delete('/photos/{id}',"PhotosController@destroy");
+
+
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {

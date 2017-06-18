@@ -79,12 +79,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // first_name
-        // last_name
-        // email
-        // pass
-        // pass conf
-
         $data['password'] = bcrypt($data['password']);
         $data['role'] = "member";
 
@@ -95,31 +89,44 @@ class RegisterController extends Controller
 
     public function registerVendor(Request $request)
     {
-        // dd($request->all());
-        // name_vendor
-        // email
-        // pass
-        // pass conf
-        // kota
-        $request['first_name'] = "";
-        $request['last_name'] = "";
+        $uncrypt_password = $request->password;
+
+        // $request['first_name'] = "";
+        // $request['last_name'] = "";
         $request['password'] = bcrypt($request['password']);
         $request['role'] = "vendor";
 
-        $this->validator($request->all()); 
-        $vendor =  User::create($request->all());
+        $this->validator($request->all());
 
-        if (!empty($request->metas)) {
-            $metas = [];
-            foreach ($request->metas as $key => $value) {
-                array_push($metas, ['key' => $key, 'value' => $value]);
+        $registerVendor = \DB::transaction(function () use ($request, $uncrypt_password) {
+
+            $vendor =  User::create($request->all());
+
+            if (!empty($request->metas)) {
+                $metas = [];
+                foreach ($request->metas as $key => $value) {
+                    array_push($metas, ['key' => $key, 'value' => $value]);
+                }
+
+
+                $vendor->metas()->createMany($metas);
             }
 
+            $isLogin = auth()->attempt(['email' => $vendor->email, 'password' => $uncrypt_password]);
 
-            $vendor->metas()->createMany($metas);
+            if ($isLogin) {
+                return true;
+            }
+
+            return false;
+        });
+
+        if ($registerVendor) {
+            return redirect()->to("/")->with('message','ahaiiii sukses'); 
         }
 
-        return redirect()->to("/")->with('message','ahaiiii sukses'); 
+        return redirect()->to("/")->with('errors', 'Maaf, sepertinya ada yang salah'); 
+
     }
 
 

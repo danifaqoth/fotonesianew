@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+    	\DB::table('users')->truncate();
+    	\DB::table('usermetas')->truncate();
+    	
         $this->call(UsersTableSeeder::class);
     }
 }

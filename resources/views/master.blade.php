@@ -1,30 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	
-	<!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>FOTONESIA</title>
 
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" >
 
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/custom.css">
 
 	@yield("head")
 
 </head>
 <body>
+    @include('inc/messages') 
+	@include('partials.header')
 
+	@yield('content')
+	
+	@include('partials.footer')
 
 	
-</body>
-
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="/js/jquery-3.2.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
+    @yield('foot')
+
+    <script>
+        $(document).ready(function(){
+
+            $("[rel='tooltip']").tooltip();    
+
+            $('#hover-cap-4col .thumbnail').hover(
+                function(){
+                    $(this).find('.caption').slideDown(250);
+                },
+                function(){
+                    $(this).find('.caption').slideUp(250);
+                }
+                );    
+
+        });
+    </script>
+</body>
 </html>

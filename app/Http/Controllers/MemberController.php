@@ -8,6 +8,20 @@ class MemberController extends Controller
 {
     public function index()
     {
-    	return view("adminlte::members.index");
+    	$members = \App\User::where('role', 'member')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    	$data = [
+    		'members' => $members
+    	];
+
+    	return view("adminlte::members.index", $data);
+    }
+
+    public function profil()
+    {
+    	return view("adminlte::members.profil");
     }
 }
+

@@ -118,8 +118,39 @@
                     <div role="tabpanel" class="tab-pane" id="vendor-tab">
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <div class="panel-body">
+
+
                                 <form class="form-horizontal" role="form" method="POST" action="{{ route('register.vendor') }}">
                                     {{ csrf_field() }}
+
+                                <div class="form-group{{ $errors->has('first-name') ? ' has-error' : '' }}">
+                                    <label for="first-name" class="col-md-4 control-label">First Name</label>
+
+                                    <div class="col-md-6">
+                                        <input id="first-name" type="text" class="form-control" name="first_name" value="{{ old('first-name') }}" required autofocus>
+
+                                        @if ($errors->has('first-name'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('first-name') }}</strong>
+                                        </span>
+                                        @endif
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group{{ $errors->has('last-name') ? ' has-error' : '' }}">
+                                    <label for="last-name" class="col-md-4 control-label">Last Name</label>
+
+                                    <div class="col-md-6">
+                                        <input id="last-name" type="text" class="form-control" name="last_name" value="{{ old('last-name') }}" required autofocus>
+
+                                        @if ($errors->has('last-name'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('last-name') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
 
                                     <div class="form-group{{ $errors->has('name-vendor') ? ' has-error' : '' }}">
                                         <label for="name-vendor" class="col-md-4 control-label">Nama Vendor</label>
@@ -127,9 +158,9 @@
                                         <div class="col-md-6">
                                             <input id="name-vendor" type="text" class="form-control" name="metas[name_vendor]" value="{{ old('metas[name_vendor]') }}" required autofocus>
 
-                                            @if ($errors->has('last-name'))
+                                            @if ($errors->has('name-vendor'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('last-name') }}</strong>
+                                                <strong>{{ $errors->first('name-vendor') }}</strong>
                                             </span>
                                             @endif
                                         </div>
@@ -182,14 +213,14 @@
                                               <option>Pilih Kota</option>
                                               <option>Surabaya</option>
                                               <option>Jakarta</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
+                                              <option>Bali</option>
+                                              <option>Jogja</option>
+                                              <option>Bandung</option>
                                             </select>
 
-                                            @if ($errors->has('last-name'))
+                                            @if ($errors->has('metas[kota]'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('last-name') }}</strong>
+                                                <strong>{{ $errors->first('metas[kota]') }}</strong>
                                             </span>
                                             @endif
                                         </div>

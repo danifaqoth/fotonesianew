@@ -7,13 +7,15 @@
 
 @section('main-content')
 	<div class="container-fluid spark-screen">
+
+	<br><br><br><br><br>
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 
 				<!-- Default box -->
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">Home</h3>
+						<h3 class="box-title">Admin</h3>
 
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -23,7 +25,7 @@
 						</div>
 					</div>
 					<div class="box-body">
-						{{ trans('adminlte_lang::message.logged') }}. Start creating your amazing application!
+						 Yeayy!! Anda Berhasil Login {{-- {{ auth()->user()->role }} --}}
 					</div>
 					<!-- /.box-body -->
 				</div>
