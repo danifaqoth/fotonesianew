@@ -9,7 +9,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="/image/logo/fotonesia.png" alt="logo"></a>		
+				<a class="navbar-brand logo" href="/"><img src="/image/logo/fotonesia.png" alt="logo"></a>		
 			</div>
 
 			<div class="collapse navbar-collapse" id="main-navbar">
@@ -28,13 +28,23 @@
 				<ul class="nav navbar-nav navbar-right">
 					@if (auth()->check())
 						<li>
-							<a href="#">Hi, {{ !empty(auth()->user()->first_name) 
+							<a href="{{ auth()->user()->role == 'vendor' 
+								? route('vendor.profil') 
+								: route('member.profil') }}"> Hi, {{ !empty(auth()->user()->first_name)
 								? auth()->user()->first_name
 								: auth()->user()->metas->where('key', 'name_vendor')->first()['value']
 							}}</a>
-						</li>
 
-						<li><a href="{{ route('logout') }}"><strong> Logout</strong></a></li>
+							{{-- <a href="{{ auth()->user()->role == 'vendor' 
+								? route('vendor.profil') 
+								: route('member.profil') }}"
+							>
+								<i class="fa fa-btn fa-user"></i>
+								<strong>Profil</strong>
+							</a> --}}
+
+						</li>
+						<li><a href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i><strong> Logout</strong></a></li>
 					@else
 						<li><a href="{{ route('login') }}"><strong> Daftar / Masuk</strong></a></li>
 

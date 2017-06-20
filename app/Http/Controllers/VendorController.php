@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Album;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Storage;
+use Auth;
+use Image;
 
 class VendorController extends Controller
 {
@@ -32,7 +36,7 @@ class VendorController extends Controller
 
     public function profil()
     {
-        $albums = Album::with('photos')->get();
+        $albums = Album::where('user_id', auth()->user()->id)->with('photos')->get();
 
         $data = [
             'albums' => $albums
@@ -41,7 +45,7 @@ class VendorController extends Controller
     	return view("adminlte::vendors.profil", $data);
     }
 
-     public function album()
+    public function album()
     {
         return view("vendor.adminlte.vendors.album");
     }
@@ -51,10 +55,31 @@ class VendorController extends Controller
         $album = Album::with('photos')->find($album_id);
 
         $data = [
-            'photos' => $album->photos,
-            'album_id' => $album_id
+            'photos' => $album->photos, 
+            'album' => $album
         ];
 
         return view('adminlte::vendors.photos', $data);
+    }
+
+    public function fprofil()
+    {
+        return view('adminlte::vendors.profil',array('user' => Auth::user() ));
+    }
+
+    public function update_fprofil(Request $request)
+    {
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' .$filename));
+
+            $user = Auth::user();
+            $user->avatar = $filename;
+            $user->save();
+        }
+
+        return redirect()->back();
+        // return view('vendor.adminlte.vendors.profil', array('user' => Auth::user() ));
     }
 }

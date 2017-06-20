@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <link rel="stylesheet" href="/css/font-awesome.min.css">
+
 	<link rel="stylesheet" href="/css/custom.css">
+
+    <link rel="stylesheet" href="/css/select2.min.css">
 
 	@yield("head")
 
@@ -33,6 +36,8 @@
     <script src="/js/jquery-3.2.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
+
+    <script src="/js/select2.min.js"></script>
 
     @yield('foot')
 
@@ -52,5 +57,8 @@
 
         });
     </script>
+
+   
+       
 </body>
 </html>

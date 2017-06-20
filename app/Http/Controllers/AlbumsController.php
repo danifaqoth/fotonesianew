@@ -25,6 +25,8 @@ class AlbumsController extends Controller
     {
 		$this->validate($request, [
 			'name' => 'required',
+			// 'user_id' => 'required|numeric',
+			'category_id' => 'required|numeric',
 			'cover_image' => 'image|max:1999'	
 		]);
 
@@ -45,6 +47,8 @@ class AlbumsController extends Controller
 
 		$album = new Album;
 		$album->name = $request->input('name');
+		$album->user_id = auth()->user()->id;
+		$album->category_id = $request->category_id;
 		$album->description = $request->input('description');
 		$album->cover_image = $filenameToStore;
 
@@ -66,7 +70,7 @@ class AlbumsController extends Controller
 		if(Storage::delete('public/album_covers/'.$album->cover_image)){
 			$album->delete();
 
-			return redirect('/albums')->with('success', 'Album Deletes');
+			return redirect('vendors/profil')->with('success', 'Album Deletes');
 		}
 	}
 }

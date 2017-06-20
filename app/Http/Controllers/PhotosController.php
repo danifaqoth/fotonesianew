@@ -71,7 +71,7 @@ class PhotosController extends Controller
 		if(Storage::delete('public/photos/'.$photo->album_id.'/'.$photo->photo)){
 			$photo->delete();
 
-			return redirect('/albums')->with('success', 'Photo Deletes');
+			return redirect()->route('vendor.photos', $photo->album_id)->with('success', 'Photo Deletes');
 		}
 	}
     

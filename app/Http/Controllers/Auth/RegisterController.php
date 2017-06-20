@@ -91,8 +91,8 @@ class RegisterController extends Controller
     {
         $uncrypt_password = $request->password;
 
-        // $request['first_name'] = "";
-        // $request['last_name'] = "";
+        $request['first_name'] = "";
+        $request['last_name'] = "";
         $request['password'] = bcrypt($request['password']);
         $request['role'] = "vendor";
 

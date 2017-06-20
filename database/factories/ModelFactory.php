@@ -24,3 +24,27 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'role' => 'member'
     ];
 });
+
+$factory->define(App\Album::class, function (Faker\Generator $faker) {
+	$image = $faker->imageUrl(640, 480);    
+
+    return [
+        'user_id' => \App\User::where('role', 'vendor')->first()->id,
+        'category_id' => 0,
+        'name' => $faker->name,
+        'description' => $faker->sentence,
+        'cover_image' => $image
+    ];
+});
+
+$factory->define(App\Photo::class, function (Faker\Generator $faker) {
+	$image = $faker->imageUrl(640, 480);    
+
+    return [
+        'album_id' => rand(1, 2),
+        'photo' => $image,
+        'title' => $faker->title,
+        'size' => str_random(5),
+        'description' => $faker->sentence,
+    ];
+});

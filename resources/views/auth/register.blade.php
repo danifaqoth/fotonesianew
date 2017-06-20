@@ -24,7 +24,7 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="member-tab">
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{-- {{ route('register.member') }} --}}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ route('register.member') }}">
                                 {{ csrf_field() }}
 
                                 <div class="form-group{{ $errors->has('first-name') ? ' has-error' : '' }}">
@@ -108,7 +108,7 @@
                     <div role="tabpanel" class="tab-pane" id="vendor-tab">
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <div class="panel-body">
-                                <form class="form-horizontal" role="form" method="POST" action="{{-- {{ route('register.vendor') }} --}}">
+                                <form class="form-horizontal" role="form" method="POST" action="{{ route('register.vendor') }}">
                                     {{ csrf_field() }}
 
                                     <div class="form-group{{ $errors->has('name-vendor') ? ' has-error' : '' }}">

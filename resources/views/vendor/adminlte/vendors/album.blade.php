@@ -40,32 +40,33 @@
 
                   <!-- Tab panes -->
                   <div class="tab-content">
-                  <div role="tabpanel" class="tab-pane fade in active" id="portofolio">
+                  <div role="tabpanel" class="tab-pane fade in active" id="portofolio"><br>
                       <div class="row">
                         <div class="col-md-9 col-md-offset-1">
+                          
                           <h3 class="text-center">Create Album</h3>
                           {!!Form::open(['action' => 'AlbumsController@store','method' => 'POST', 'enctype' => 'multipart/form-data'])!!} <br>
                           {{ Form::text('name','',['placeholder' => 'Album Name', 'class' => 'form-control']) }} <br>
                           {{ Form::textarea('description','',['placeholder' => 'Album Description', 'class' => 'form-control'])}} <br>
+                          <div class="row">
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="category_id">
+                                              <option >Kategori Foto</option>
+                                              <option value="1">Wedding/Prewedding</option>
+                                              <option value="2">Produk/Iklan</option>
+                                              <option value="3">Company Profil</option>
+                                              <option value="4">Event</option>
+                                            </select>
+                                        </div>
+                                    </div> <br>
                           {{ Form::file('cover_image') }} <br>
-                          {{ Form::submit('submit',['class' => 'btn btn-primary']) }} <br>
+                          {{ Form::submit('submit',['class' => 'btn btn-primary']) }} &nbsp;
+                          <a href="{{ route('vendor.profil') }}" class="btn btn-default ">
+                            Cancel
+                          </a>
                           {!! Form::close() !!}
                         </div>
                       </div>  
-
-                    
-
-                       {{--  @foreach ($albums as $album)
-                            <div class="col-md-4 col-fav">
-                                <a href="{{ route('vendor.photos', $album->id) }}">
-                                    <div style="background-image: url('/storage/album_covers/{{ $album->cover_image }}')" class="porto-vendor"></div>
-                                </a>
-                                {{-- <img src="/storage/album_covers/{{ $album->cover_image }}" 
-                                    alt="" 
-                                    class="porto-vendor img-thumbnail"
-                                />
-                            </div>
-                        @endforeach --}}
                       
                     </div>
                     <div role="tabpanel" class="tab-pane fade " id="daftar-harga">
