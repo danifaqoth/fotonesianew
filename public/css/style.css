@@ -29,6 +29,12 @@ Header Area
 
 .nav-header {
 	margin: 0;
+	color: red;
+	border: 0;
+	border-radius: 0;
+	background:#f4f4f4;
+	/*position: fixed;
+	z-index: 1;*/
 }
 
 .navbar-nav,
@@ -93,7 +99,7 @@ Search Wrapper
     bottom: 0px;
     width: 100%;
     padding-bottom: 40px;
-    background: rgba(0, 51, 102, 0.2);
+    background: rgba(0, 51, 102, 0.5);
 }
 
 .foto-category {
@@ -113,6 +119,15 @@ Search Wrapper
 	padding: 0;
 }
 
+.btn-cari {
+	background-color: #ff5722!important;
+	color: #ffffff !important;
+}
+.btn-cari:hover {
+	background-color: #E9500D!important;
+	color: #ffffff !important;
+}
+
 /*======================
 Kategori
 ======================*/
@@ -123,10 +138,10 @@ Kategori
   margin: 0 auto;
 }
 .portfolio-box .portfolio-box-caption {
-  color: red;
+  color: white;
   opacity: 0;
   display: block;
-  background: rgba(60,138,184, 0.6);
+  background: rgba(0, 0, 26, 0.7);
   position: absolute;
   bottom: 0;
   text-align: center;

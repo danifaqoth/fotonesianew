@@ -1,3 +1,7 @@
+<head>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+
 <header>  
 	<nav class="navbar navbar-default nav-header">
 		<div class="container-fluid">
@@ -13,11 +17,11 @@
 			</div>
 
 			<div class="collapse navbar-collapse" id="main-navbar">
-				<form class="navbar-form navbar-left main-form">
+				<form class="navbar-form navbar-left main-form search" method="get" id="search-form">
 					<div class="input-group input-search">
-						<input type="text" class="form-control search" placeholder="Cari Fotografer">
+						<input type="text" class="form-control search-field search " placeholder="Cari Fotografer" id="q" name="q">
 						<span class="input-group-btn btn-search">
-							<button class="btn btn-default search" type="button">
+							<button class="btn btn-default search_button search" type="submit">
 								<div class="search">
 									<i class="fa fa-search"></i>
 								</div>
@@ -54,3 +58,39 @@
 		</div><!-- /.container -->
 	</nav>
 </header>
+
+
+<script src="{{ asset('/js/jquery-3.2.0.min.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script>
+	
+	$(function()
+	{
+		$( "#q" ).autocomplete({
+			source: "{{ route('vendor.getAll') }}",
+			minLength: 3,
+			select: function(event, ui) {
+				$('#q').val(ui.item.value);
+				window.location.href = '/vendors/profil/' + ui.item.id;
+			}
+		});
+
+		$('#q').data( "ui-autocomplete")._renderItem = function(ul, item)
+		{
+			var $li = $("<li style='width:650px; margin-left:8px; margin-bottom:5px; margin-top:5px' >"),
+			$img = $("<img style='width:10%'> ");
+
+			$img.attr({
+				src: '{{ asset('/uploads/avatars') }}' + '/' + item.avatar,
+				alt: item.avatar
+			});
+
+			$li.attr('data-value', item.value);
+			$li.append("");
+			$li.append($img).append(""+ item.value);
+			return $li.appendTo(ul);
+		};
+	});
+
+</script>

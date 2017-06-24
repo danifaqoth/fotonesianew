@@ -1,16 +1,18 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div><span class="glyphicon glyphicon-user"></span> <a href="#" style="color: #000000;">{{ auth()->user()->metas->where('key', 'name_vendor')->first()['value'] }}</a> 
+    <div><span class="glyphicon glyphicon-user"></span> <a href="#" style="color: #000000;">{{ $user->metas->where('key', 'name_vendor')->first()['value'] }}</a> 
     </div>
   </div>
   <div class="panel-body" align="center">
     <img src="/uploads/avatars/{{ $user->avatar }}" align="center" class="img-thumbnail" style="width: 80%;  ">
-    <form enctype="multipart/form-data" action="/vendors/profil" method="POST">
-      <label>Update Profil Image</label>
-      <input type="file" name="avatar" >
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      <input type="submit" class="btn btn-sm btn-primary" name="" value="Upload">
-    </form>
+    @if($user->role === "vendor")
+      <form enctype="multipart/form-data" action="/vendors/profil" method="POST">
+        <label>Update Profil Image</label>
+        <input type="file" name="avatar" >
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="submit" class="btn btn-sm btn-primary" name="" value="Upload">
+      </form>
+    @endif
     <br>
     <button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#ModalInbox" data-whatever="@mdo"> <i class="fa fa-envelope" aria-hidden="true"></i> Tanya Vendor</button>
     <hr>

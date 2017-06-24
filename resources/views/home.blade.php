@@ -7,14 +7,23 @@
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox" style="position: relative;">
-		    	<div class="item active">
-		      		<img src="image/slide1.jpg" alt="...">
+		    	<div class="item ">
+		      		<img src="image/newslide1.jpg" alt="...">
 			    </div>
-			    <div class="item">
-			    	<img src="image/slide2.jpg" alt="...">		
+			    <div class="item ">
+		      		<img src="image/newslide6.jpg" alt="...">
 			    </div>
-			    <div class="item">
-			    	<img src="image/slide3.jpg" alt="...">
+			    <div class="item active">
+		      		<img src="image/newslide3.jpg" alt="...">
+			    </div>
+			    <div class="item ">
+		      		<img src="image/newslide4.jpg" alt="...">
+			    </div>
+			    <div class="item ">
+		      		<img src="image/newslide5.jpg" alt="...">
+			    </div>
+			    <div class="item ">
+		      		<img src="image/newslide2.jpg" alt="...">
 			    </div>
 	
 				<div class="search-wrapper"> 			
@@ -59,7 +68,7 @@
 				    				</div>
 				    			</div>	
 				    			<div class="col-md-1">
-				    				<button type="submit" class="btn btn-block btn-primary">Cari</button>
+				    				<button type="submit" class="btn btn-cari btn-block">Cari</button>
 				    			</div>																
 				    		</div>
 				    	</form>
@@ -70,7 +79,7 @@
 	</section>
 	<!-- End Carousel -->
 
-	<!-- Kategori Foto  -->
+	{{-- <!-- Kategori Foto  -->
 	<section>
 		<div class="container">
 			<h3 class="text-center">Category Photography</h3>
@@ -125,56 +134,74 @@
 					</li>	
 			</div>
 	</section>
-	<!-- End Kategori -->
+	<!-- End Kategori --> --}}
 
-	<!-- 	<div class="row">
-				<div class="col-lg-4 col-sm-6">
-					<a href="#" class="portfolio-box">
-                        <img src="image/5.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="#" class="portfolio-box">
-                        <img src="image/6.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<a href="#" class="portfolio-box">
-                        <img src="image/7.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-				</div>
-			</div> -->
+	<div style="margin: 50px 0"></div>
 
+	<div class="form-group">
+		<div class="row">
+		<div class="col-lg-3 col-sm-6">
+				<a href="#" class="portfolio-box">
+					<img src="image/7.jpg" class="img-responsive" alt="">
+					<div class="portfolio-box-caption">
+						<div class="portfolio-box-caption-content">
+							<div class="project-category text-faded">
+
+							</div>
+							<div class="project-name">
+								Wedding/Prewedding
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="#" class="portfolio-box">
+					<img src="image/fotopro3.jpeg" class="img-responsive" alt="">
+					<div class="portfolio-box-caption">
+						<div class="portfolio-box-caption-content">
+							<div class="project-category text-faded">
+
+							</div>
+							<div class="project-name">
+								Produk/iklan
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="#" class="portfolio-box">
+					<img src="image/fotocp.jpg" class="img-responsive" alt="">
+					<div class="portfolio-box-caption">
+						<div class="portfolio-box-caption-content">
+							<div class="project-category text-faded">
+
+							</div>
+							<div class="project-name">
+								Company Profile
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<a href="#" class="portfolio-box">
+					<img src="image/fotodok.jpg" class="img-responsive" alt="">
+					<div class="portfolio-box-caption">
+						<div class="portfolio-box-caption-content">
+							<div class="project-category text-faded">
+
+							</div>
+							<div class="project-name">
+								Event
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
 
 	<div style="margin: 50px 0"></div>
 

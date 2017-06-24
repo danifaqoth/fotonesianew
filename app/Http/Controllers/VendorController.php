@@ -36,10 +36,12 @@ class VendorController extends Controller
 
     public function profil()
     {
-        $albums = Album::where('user_id', auth()->user()->id)->with('photos')->get();
+        $user = auth()->user();
+        $albums = Album::where('user_id', $user->id)->with('photos')->get();
 
         $data = [
             'albums' => $albums
+            // 'user' => $user
         ];
 
     	return view("adminlte::vendors.profil", $data);
@@ -80,6 +82,31 @@ class VendorController extends Controller
         }
 
         return redirect()->back();
-        // return view('vendor.adminlte.vendors.profil', array('user' => Auth::user() ));
+        //return view('adminlte::vendors.profil');
+    }
+
+    public function getAll(Request $request)
+    {
+        
+        $term = $request->term;
+
+        $queries = \App\Usermeta::join('users', 'users.id', '=', 'usermetas.user_id')
+                        ->where('value', 'like', '%'.$term.'%' )
+                        ->take(6)
+                        ->get();
+
+     //    $queries = User::where(function($query)
+     //    {
+        //  $query->where('first_name', 'like', '%'.$term.'%' );
+        // })->take(6)->get();
+
+        $results = array();
+
+        foreach ($queries as $query) 
+        {
+            $results[] = [ 'id' => $query->id, 'avatar' =>$query->avatar, 'value' => $query->value];
+        }
+
+        return response()->json($results);
     }
 }

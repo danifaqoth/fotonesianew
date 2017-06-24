@@ -52,6 +52,16 @@
                                 <a href="{{ route('vendor.photos', $album->id) }}">
                                     <div style="background-image: url('/storage/album_covers/{{ $album->cover_image }}')" class="porto-vendor"></div>
                                 </a>
+                                <div class="portfolio-box-caption">
+                                  <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                      Category
+                                    </div>
+                                    <div class="project-name">
+                                      Project Name
+                                    </div>
+                                  </div>
+                                </div>
                                 {{-- <img src="/storage/album_covers/{{ $album->cover_image }}" 
                                     alt="" 
                                     class="porto-vendor img-thumbnail"
