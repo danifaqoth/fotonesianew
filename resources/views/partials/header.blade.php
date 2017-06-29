@@ -46,8 +46,8 @@
 								<i class="fa fa-btn fa-user"></i>
 								<strong>Profil</strong>
 							</a> --}}
-
 						</li>
+						<li><a href=" {{ route('vendor.inbox') }} "><i class="fa fa-btn fa-envelope-o" aria-hidden="true"></i></a></li>
 						<li><a href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i><strong> Logout</strong></a></li>
 					@else
 						<li><a href="{{ route('login') }}"><strong> Daftar / Masuk</strong></a></li>

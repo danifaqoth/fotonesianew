@@ -27,7 +27,7 @@ class AlbumsController extends Controller
 			'name' => 'required',
 			// 'user_id' => 'required|numeric',
 			'category_id' => 'required|numeric',
-			'cover_image' => 'image|max:1999'	
+			'cover_image' => 'image|max:7000'	
 		]);
 
 		// Get filename with extension

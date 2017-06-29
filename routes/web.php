@@ -10,7 +10,7 @@ Route::post('members/profil/sendmessage',"MessageController@sendMessage")->name(
 
 
 // Route::get('/photos/{id}',"PhotosController@show");
-// Route::delete('/photos/{id}',"PhotosController@destroy");
+Route::delete('/photos/{id}',"PhotosController@destroy");
 
 // Route::get('partials/header','AutocompleteController@index');
 
@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::group(['middleware' => 'vendor'], function () {
 		Route::get('vendors/profil',"VendorController@profil")->name('vendor.profil');
 		Route::get('vendors/album',"VendorController@album")->name('vendor.album');
+		Route::get('vendors/harga',"VendorController@harga")->name('vendor.harga');
+		Route::get('vendors/inbox',"VendorController@inbox")->name('vendor.inbox');
 		Route::get('vendors/profil/{id}/photos',"VendorController@getPhotos")->name('vendor.photos');
 		Route::get('vendors/profil/photo',"VendorController@fprofil");
 		Route::post('vendors/profil',"VendorController@update_fprofil");

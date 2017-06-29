@@ -33,7 +33,7 @@
 				    			<h3 class="text-center">SEARCH YOUR PHOTOGRAPHER</h3>
 				    		</div>
 				    		<div class="row">
-				    			<div class="col-md-3 col-md-offset-1">
+				    			<div class="col-md-3 col-xs-6 col-md-offset-1">
 				    				<div class="form-group">
 				    					<select class="form-control">
 				    						<option>Semua Lokasi</option>
@@ -44,7 +44,7 @@
 				    					</select>
 				    				</div>
 				    			</div>
-				    			<div class="col-md-3">
+				    			<div class="col-md-3 col-xs-6 ">
 				    				<div class="form-group">
 				    					<select class="form-control">
 				    						<option>Kategori</option>
@@ -55,7 +55,7 @@
 				    					</select>
 				    				</div>
 				    			</div>
-				    			<div class="col-md-3">
+				    			<div class="col-md-3 col-xs-6">
 				    				<div class="form-group">
 				    					<select class="form-control">
 				    						<option>Kisaran Harga</option>
@@ -67,7 +67,7 @@
 				    					</select>
 				    				</div>
 				    			</div>	
-				    			<div class="col-md-1">
+				    			<div class="col-md-1 col-xs-3">
 				    				<button type="submit" class="btn btn-cari btn-block">Cari</button>
 				    			</div>																
 				    		</div>
@@ -295,9 +295,6 @@
 				<div class="col-md-3 col-fav"><img src="image/2.jpg" alt="" class="favorit"></div>
 				<div class="col-md-3 col-fav"><img src="image/3.jpg" alt="" class="favorit"></div>
 				<div class="col-md-3 col-fav"><img src="image/4.jpg" alt="" class="favorit"></div>
-				<div class="col-md-3 col-fav"><img src="image/5.jpg" alt="" class="favorit"></div>
-				<div class="col-md-3 col-fav"><img src="image/6.jpg" alt="" class="favorit"></div>
-				<div class="col-md-3 col-fav"><img src="image/7.jpg" alt="" class="favorit"></div>
 			</div>
 		</div>	
 	</section>

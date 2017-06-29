@@ -22,12 +22,12 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-3">
             @include('inc/profile_vendor_box')
           </div>
 
-          <div class="col-md-8">
-            <div class="panel panel-default">
+          <div class="col-md-9">
+            <div class="panel panel-default panel-profil">
               <div class="panel">
                 <div>
                   <!-- Nav tabs -->
@@ -70,6 +70,12 @@
                       
                     </div>
                     <div role="tabpanel" class="tab-pane fade " id="daftar-harga">
+
+                    <div class="row col-md-12 col-md-offset-5">
+                      <a href="/vendors/harga" class="btn btn-primary">Edit Harga</a>
+                    </div>
+                    <hr><hr>
+
                       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="headingOne">

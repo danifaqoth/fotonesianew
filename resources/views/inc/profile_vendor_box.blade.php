@@ -14,7 +14,7 @@
       </form>
     @endif
     <br>
-    <button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#ModalInbox" data-whatever="@mdo"> <i class="fa fa-envelope" aria-hidden="true"></i> Tanya Vendor</button>
+    <button type="button" class="btn btn-warning btn" data-toggle="modal" data-target="#ModalInbox" data-whatever="@mdo"> <i class="fa fa-envelope" aria-hidden="true"></i> Tanya Vendor</button>
     <hr>
     <p>Dans Production</p> 
              

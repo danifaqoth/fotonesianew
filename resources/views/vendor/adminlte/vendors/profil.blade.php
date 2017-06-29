@@ -22,12 +22,12 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-3">
             @include('inc/profile_vendor_box')
           </div>
 
-          <div class="col-md-8">
-            <div class="panel panel-default">
+          <div class="col-md-9">
+            <div class="panel panel-default panel-profil">
               <div class="panel">
                 <div>
                   <!-- Nav tabs -->
@@ -48,17 +48,14 @@
                     </div>
                     <br><hr>    
                         @foreach ($albums as $album)
-                            <div class="col-md-4 col-fav">
+                            <div class="col-md-4 col-album">
                                 <a href="{{ route('vendor.photos', $album->id) }}">
                                     <div style="background-image: url('/storage/album_covers/{{ $album->cover_image }}')" class="porto-vendor"></div>
                                 </a>
                                 <div class="portfolio-box-caption">
                                   <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                      Category
-                                    </div>
-                                    <div class="project-name">
-                                      Project Name
+                                    <div class="nama_album">
+                                      <h5 class="text-center" style="color: black"><strong>{{ $album->name }}</strong></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -70,7 +67,18 @@
                         @endforeach
                         
                     </div>
+
+                     
+                    
+                   
+
                     <div role="tabpanel" class="tab-pane fade " id="daftar-harga">
+
+                    <div class="row col-md-12 col-md-offset-5">
+                      <a href="/vendors/harga" class="btn btn-primary">Edit Harga</a>
+                    </div>
+                    <hr><hr>
+
                       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="headingOne">
