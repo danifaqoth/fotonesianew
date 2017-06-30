@@ -8,16 +8,47 @@ use App\Message;
 
 class MessageController extends Controller
 {
-    public function sendMessage(Request $request)
+    public function getVendorMessages()
     {
-    	
-    	$message = new Message;
-    	// $message->user_id = auth()->user()->id;
-    	$message->subject = $request->input('subject');
-    	$message->content = $request->input('content');
+        $messages = Message::where('vendor_id', auth()->user()->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-    	$message->save();
+        $data = [
+            'messages' => $messages
+        ];
 
-    	return redirect('vendors/profil')->with('succes' , 'Pesan Terkirim');
+        return view("vendor.adminlte.vendors.message", $data);
+    }
+
+    public function sendMessageMember(Request $request)
+    {
+        $request['member_id'] = auth()->user()->id;
+    	$message = Message::create($request->all());
+
+    	return redirect()->back()->with('success' , 'Pesan Terkirim');
+    }
+
+    public function sendMessageVendor(Request $request)
+    {
+        $request['vendor_id'] = auth()->user()->id;
+        $message = Message::create($request->all());
+
+        return redirect()->back()->with('success' , 'Pesan Terkirim');
+    }
+
+    public function readMessageVendor($id)
+    {
+        $message = new Message();
+        $messages = $message->where('vendor_id', auth()->user()->id)->get();
+        $message = $message->where('vendor_id', auth()->user()->id)->find($id);
+
+        $data = [
+            'messages' => $messages,
+            'message' => $message,
+            'member' => $message->member
+        ];
+
+        return view("adminlte::vendors.read_message", $data);
     }
 }	

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $fillable = array('subject', 'content');
+    protected $fillable = array('member_id', 'vendor_id', 'subject', 'content');
 
-		// public function photos()
-		// {
-		// 	return $this->hasMany('App\Photo');
-		// }
+    public function member()
+    {
+    	return $this->belongsTo(User::class, 'member_id');
+    }
 }

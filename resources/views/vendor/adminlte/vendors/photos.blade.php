@@ -15,11 +15,11 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 @include('inc/profile_vendor_box')
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="form-group">
 
                     <a href="{{ route('vendor.profil') }}" class="btn btn-default">
@@ -53,13 +53,21 @@
                         <div class="panel panel-default">
                             <div class="panel">
                                 <div class="panel-body">
-                                    <div class="col-md-12 col-fav">
+                                    <div class="col-md-12 col-photo">
                                         <a href="">
                                             <img src="/storage/photos/{{ $photo->album_id }}/{{ $photo->photo }}" 
                                                 class="img-responsive"/>
                                         </a><hr>
                                         <a href="" class="fa fa-thumbs-o-up fa-3x" aria-hidden="true"></a>
                                         <a href="" class="fa fa-thumbs-up fa-3x" aria-hidden="true"></a>
+
+                                        <div class="interaction">
+                                            <a href="#" class="like" >Like</a> |
+                                            <a href="#" class="like" >Dislike</a>   
+                                           {{--  @if(Auth::user() == $photos->id)   
+                                                <a href="#" class="edit">Edit</a>
+                                            @endif      --}}      
+                                        </div>
                                         
                                             {!!Form::open(['action' => ['PhotosController@destroy', $photo->id], 'method' => 'POST'])!!}
                                             {{Form::hidden('_method', 'DELETE')}}
@@ -70,13 +78,18 @@
                             </div>
                         </div>
                     @endforeach
-                @else
-                    <div class="alert alert-danger">Tidak ditemukan foto apapun!.</div>
-                @endif
+                        @else
+                        <div class="alert alert-danger">Tidak ditemukan foto apapun!.</div>
+                        @endif
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-      @endsection
+{{-- <script>
+    var token = '{{ Session::token() }}';
+    var urlEdit = '{{ route('edit') }}';
+</script> --}}
+
+@endsection

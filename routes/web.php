@@ -6,7 +6,6 @@ Route::get('/',"HomeController@index");
 
 // sementara | aslinya harus login
 Route::get('/dashboard',"HomeController@dashboard");
-Route::post('members/profil/sendmessage',"MessageController@sendMessage")->name('member.sendmessage');
 
 
 // Route::get('/photos/{id}',"PhotosController@show");
@@ -32,10 +31,12 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('vendors/profil',"VendorController@profil")->name('vendor.profil');
 		Route::get('vendors/album',"VendorController@album")->name('vendor.album');
 		Route::get('vendors/harga',"VendorController@harga")->name('vendor.harga');
-		Route::get('vendors/inbox',"VendorController@inbox")->name('vendor.inbox');
 		Route::get('vendors/profil/{id}/photos',"VendorController@getPhotos")->name('vendor.photos');
 		Route::get('vendors/profil/photo',"VendorController@fprofil");
 		Route::post('vendors/profil',"VendorController@update_fprofil");
+		Route::get('vendors/messages',"MessageController@getVendorMessages")->name('vendor.message');
+		Route::get('vendors/readmessage/{id}',"MessageController@readMessageVendor")->name('vendor.readmessage');
+		Route::post('vendors/message/sendmessage',"MessageController@sendMessageVendor")->name('vendor.sendmessage');
 	});
 
 	// Member
@@ -43,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('members/profil',"MemberController@profil")->name('member.profil');
 		Route::get('members/profil/photo',"MemberController@fprofil");
 		Route::post('members/profil',"MemberController@update_fprofil");
+		Route::get('members/messages',"MessageController@getMemberMessages")->name('member.message');
+		Route::get('members/readmessage/{id}',"MessageController@readMessageMember")->name('member.readmessage');
+		Route::post('members/profil/sendmessage',"MessageController@sendMessageMember")->name('member.sendmessage');
 	});
 	
 

@@ -12,7 +12,7 @@ class VendorPublicController extends Controller
         $albums = $vendor->albums;
 
         $data=[
-            'user' => $vendor,
+            'vendor' => $vendor,
             'albums' => $albums,
         ];   
         return view('adminlte::vendors.profil', $data);

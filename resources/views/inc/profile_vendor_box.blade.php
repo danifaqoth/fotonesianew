@@ -1,20 +1,23 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div><span class="glyphicon glyphicon-user"></span> <a href="#" style="color: #000000;">{{ $user->metas->where('key', 'name_vendor')->first()['value'] }}</a> 
+    <div><span class="glyphicon glyphicon-user"></span> <a href="#" style="color: #000000;">{{ $vendor->metas->where('key', 'name_vendor')->first()['value'] }}</a> 
     </div>
   </div>
   <div class="panel-body" align="center">
-    <img src="/uploads/avatars/{{ $user->avatar }}" align="center" class="img-thumbnail" style="width: 80%;  ">
-    @if($user->role === "vendor")
-      <form enctype="multipart/form-data" action="/vendors/profil" method="POST">
-        <label>Update Profil Image</label>
-        <input type="file" name="avatar" >
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="submit" class="btn btn-sm btn-primary" name="" value="Upload">
-      </form>
-    @endif
-    <br>
-    <button type="button" class="btn btn-warning btn" data-toggle="modal" data-target="#ModalInbox" data-whatever="@mdo"> <i class="fa fa-envelope" aria-hidden="true"></i> Tanya Vendor</button>
+    <img src="/uploads/avatars/{{ $vendor->avatar }}" align="center" class="img-thumbnail" style="width: 80%">
+
+    @if(Auth::user()->role == "vendor")
+        <form enctype="multipart/form-data" action="/vendors/profil" method="POST">
+          <label>Update Profil Image</label>
+          <input type="file" name="avatar" >
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <input type="submit" class="btn btn-sm btn-primary" name="" value="Upload">
+        </form>
+    @elseif(Auth::user()->role == "member")
+    <hr>
+        <button type="button" class="btn btn-send" data-toggle="modal" data-target="#ModalInbox" data-whatever="@mdo"> <i class="fa fa-envelope" aria-hidden="true"></i> Tanya Vendor</button>
+    @endif 
+
     <hr>
     <p>Dans Production</p> 
              
@@ -24,24 +27,31 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
         <form method="POST" action="{{ route('member.sendmessage') }}">
+        <input type="hidden" name="vendor_id" value="{{ $vendor->id }}">
         {{ csrf_field() }}
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="exampleModalLabel">INBOX</h4>
           </div>
           <div class="modal-body">
-              <div class="form-group float left">
-                <label for="recipient-name" class="control-label">Subject:</label>
-                <input type="text" class="form-control" id="recipient-name" name="subject">
-              </div>
               <div class="form-group">
-                <label for="message-text" class="control-label">Message:</label>
-                <textarea class="form-control" id="message-text" rows="10" name="content"></textarea>
+                <label for="recipient-name" class="col-lg-2 control-label">Subject:</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" id="recipient-name" name="subject">
+                </div>
               </div>
+              <br><br>
+              <div class="form-group">
+                <label for="message-text" class="col-lg-2 control-label">Message:</label>
+                <div class="col-lg-10">
+                  <textarea class="form-control" id="message-text" rows="10" name="content"></textarea>
+                </div>
+              </div>
+              <br><br><br>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Send message</button>
+            <button type="button" class="btn " data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-send">Send message</button>
           </div>
         </form>
         </div>

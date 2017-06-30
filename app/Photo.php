@@ -12,4 +12,9 @@ class Photo extends Model
 	{
 		return $this->belongsTo('App\Album');
 	}
+
+	public function likes()
+    {
+    	return $this->hasMany('App/Like');
+    }
 }

@@ -1,7 +1,3 @@
-<head>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-</head>
-
 <header>  
 	<nav class="navbar navbar-default nav-header">
 		<div class="container-fluid">
@@ -47,7 +43,7 @@
 								<strong>Profil</strong>
 							</a> --}}
 						</li>
-						<li><a href=" {{ route('vendor.inbox') }} "><i class="fa fa-btn fa-envelope-o" aria-hidden="true"></i></a></li>
+						<li><a href=" {{ route('vendor.message') }} "><i class="fa fa-btn fa-envelope-o" aria-hidden="true"></i></a></li>
 						<li><a href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i><strong> Logout</strong></a></li>
 					@else
 						<li><a href="{{ route('login') }}"><strong> Daftar / Masuk</strong></a></li>
@@ -58,39 +54,3 @@
 		</div><!-- /.container -->
 	</nav>
 </header>
-
-
-<script src="{{ asset('/js/jquery-3.2.0.min.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-<script>
-	
-	$(function()
-	{
-		$( "#q" ).autocomplete({
-			source: "{{ route('vendor.getAll') }}",
-			minLength: 3,
-			select: function(event, ui) {
-				$('#q').val(ui.item.value);
-				window.location.href = '/vendors/profil/' + ui.item.id;
-			}
-		});
-
-		$('#q').data( "ui-autocomplete")._renderItem = function(ul, item)
-		{
-			var $li = $("<li style='width:650px; margin-left:8px; margin-bottom:5px; margin-top:5px' >"),
-			$img = $("<img style='width:10%'> ");
-
-			$img.attr({
-				src: '{{ asset('/uploads/avatars') }}' + '/' + item.avatar,
-				alt: item.avatar
-			});
-
-			$li.attr('data-value', item.value);
-			$li.append("");
-			$li.append($img).append(""+ item.value);
-			return $li.appendTo(ul);
-		};
-	});
-
-</script>

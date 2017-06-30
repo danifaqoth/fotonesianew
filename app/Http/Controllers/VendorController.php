@@ -40,8 +40,8 @@ class VendorController extends Controller
         $albums = Album::where('user_id', $user->id)->with('photos')->get();
 
         $data = [
-            'albums' => $albums
-            // 'user' => $user
+            'albums' => $albums,
+            'vendor' => $user
         ];
 
     	return view("adminlte::vendors.profil", $data);
@@ -49,7 +49,14 @@ class VendorController extends Controller
 
     public function album()
     {
-        return view("vendor.adminlte.vendors.album");
+       $user = auth()->user();
+       $albums = Album::where('user_id', $user->id)->with('photos')->get();
+
+       $data = [
+       'albums' => $albums,
+       'vendor' => $user
+       ];
+        return view("vendor.adminlte.vendors.album", $data);
     }
 
      public function harga()
@@ -57,18 +64,15 @@ class VendorController extends Controller
         return view("vendor.adminlte.vendors.harga");
     }
 
-     public function inbox()
-    {
-        return view("vendor.adminlte.vendors.inbox");
-    }
-
     public function getPhotos($album_id)
     {
+        $user = auth()->user();
         $album = Album::with('photos')->find($album_id);
 
         $data = [
             'photos' => $album->photos, 
-            'album' => $album
+            'album' => $album,
+            'vendor' => $user
         ];
 
         return view('adminlte::vendors.photos', $data);
