@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Album;
+use App\User;
+use App\Usermeta;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 use Image;
 
+
 class VendorController extends Controller
 {
     public function index()
     {
-    	$vendors = \App\User::where('role', 'vendor')
+    	$vendors = User::where('role', 'vendor')
     			->with('metas')
     			->orderBy('created_at', 'desc')
     			->get();
@@ -41,7 +44,9 @@ class VendorController extends Controller
 
         $data = [
             'albums' => $albums,
-            'vendor' => $user
+            'vendor' => $user,
+            'hargas' => $user->hargas,
+            'reviews' => $user->reviews,
         ];
 
     	return view("adminlte::vendors.profil", $data);
@@ -59,20 +64,27 @@ class VendorController extends Controller
         return view("vendor.adminlte.vendors.album", $data);
     }
 
-     public function harga()
+    public function harga()
     {
+        // $user = vendor;
+        return view("vendor.adminlte.vendors.harga");
+    }
+
+    public function review()
+    {
+        // $user = vendor;
         return view("vendor.adminlte.vendors.harga");
     }
 
     public function getPhotos($album_id)
     {
-        $user = auth()->user();
         $album = Album::with('photos')->find($album_id);
+        $user = $album->vendor;
 
         $data = [
             'photos' => $album->photos, 
             'album' => $album,
-            'vendor' => $user
+            'vendor' => $user,
         ];
 
         return view('adminlte::vendors.photos', $data);
@@ -104,7 +116,7 @@ class VendorController extends Controller
         
         $term = $request->term;
 
-        $queries = \App\Usermeta::join('users', 'users.id', '=', 'usermetas.user_id')
+        $queries = Usermeta::join('users', 'users.id', '=', 'usermetas.user_id')
                         ->where('value', 'like', '%'.$term.'%' )
                         ->take(6)
                         ->get();
@@ -122,5 +134,40 @@ class VendorController extends Controller
         }
 
         return response()->json($results);
+    }
+
+    public function search(Request $request)
+    {
+        $vendors = User::where('role', 'vendor')
+            ->with('metas')
+            ->orderBy('created_at', 'desc');
+
+//      FILTER
+//      lokasi 
+        if ($lokasi = $request->lokasi) {
+            $vendors = $vendors->where(function ($query) use ($lokasi) {
+                $query->whereHas('metas', function ($q) use ($lokasi) {
+                    $q->where('key', 'kota')->where('value', 'LIKE', "%$lokasi%");
+                });
+            });
+        }
+//      category
+        // if ($category = $request->category) {
+        //     $vendors = $vendors->where(function ($query) use ($category) {
+        //         $query->whereHas('category', function ($q) use ($category) {
+        //             $q->where('slug', 'LIKE', "%$category%");
+        //         });
+        //     });
+        // } 
+
+
+        $vendors = $vendors->get();
+
+        $data = [
+            'vendors' => $vendors
+        ];
+
+
+        return view("adminlte::vendors.search", $data);
     }
 }

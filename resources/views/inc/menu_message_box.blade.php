@@ -48,7 +48,9 @@
   </div>
   <ul class="inbox-nav inbox-divider">
     <li class="active">
-      <a href="{{ route('vendor.message') }}"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">{{ $messages->count() }}</span></a>
+      <a href="{{ auth()->user()->role == 'vendor' 
+                ? route('vendor.message') 
+                : route('member.message') }}"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">{{ $messages->count() }}</span></a>
 
     </li>
     <li>

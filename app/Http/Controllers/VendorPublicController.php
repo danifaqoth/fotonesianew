@@ -14,7 +14,10 @@ class VendorPublicController extends Controller
         $data=[
             'vendor' => $vendor,
             'albums' => $albums,
+            'hargas' => $vendor->hargas,
+            'reviews' => $vendor->reviews,
         ];   
+            
         return view('adminlte::vendors.profil', $data);
     }
 }

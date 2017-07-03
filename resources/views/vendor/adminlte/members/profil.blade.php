@@ -27,7 +27,7 @@
           @include('inc/profile_member_box')
         </div>
         <div class="col-md-8">
-          <div class="panel panel-default">
+          {{-- <div class="panel panel-default">
             <div class="panel">
               <div>
 
@@ -53,7 +53,16 @@
                
 
             </div>
+          </div> --}}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              About Me
+            </div>
+            <div class="panel-body" align="center">
+              {{-- Nama : <a href="{{ $member->first_name }}"></a> --}}
+            </div>
           </div>
+
         </div>
       </div>
     </div>

@@ -44,6 +44,7 @@
         <tbody>
 
           @foreach ($messages as $message)
+         
           <tr>
             <td class="inbox-small-cells">
               <input type="checkbox" class="mail-checkbox">
@@ -53,7 +54,7 @@
                 {{ $message->subject }}
               </a>
             </td>
-            <td class="view-message ">{{ str_limit($message->content, 100) }}</td>
+            <td class="view-message ">{{ str_limit($message->content, 60) }}</td>
             <td class="view-message  text-right">{{ $message->created_at->diffForHumans() }}</td>
           </tr>
           @endforeach

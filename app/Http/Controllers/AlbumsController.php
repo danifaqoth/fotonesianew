@@ -26,33 +26,29 @@ class AlbumsController extends Controller
 		$this->validate($request, [
 			'name' => 'required',
 			// 'user_id' => 'required|numeric',
-			'category_id' => 'required|numeric',
-			'cover_image' => 'image|max:7000'	
+			'category_id' => 'required',
+			'cover' => 'image|max:7000'	
 		]);
 
 		// Get filename with extension
-		$filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+		$filenameWithExt = $request->file('cover')->getClientOriginalName();
 
 		//Get Just the filename
 		$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
 
 		//Get Extension
-		$extension = $request->file('cover_image')->getClientOriginalExtension();
+		$extension = $request->file('cover')->getClientOriginalExtension();
 
 		//Create new filename
 		$filenameToStore = $filename.'_'.time().'.'.$extension;
 
 		//Upload Image
-		$path= $request->file('cover_image')->storeAs('public/album_covers', $filenameToStore);
+		$path= $request->file('cover')->storeAs('public/album_covers', $filenameToStore);
 
-		$album = new Album;
-		$album->name = $request->input('name');
-		$album->user_id = auth()->user()->id;
-		$album->category_id = $request->category_id;
-		$album->description = $request->input('description');
-		$album->cover_image = $filenameToStore;
+		$request['user_id'] = auth()->user()->id;
+		$request['cover_image'] = $filenameToStore;
 
-		$album->save();
+		$album = Album::create($request->all());
 
 		return redirect('vendors/profil')->with('succes', 'Album Created');
     }

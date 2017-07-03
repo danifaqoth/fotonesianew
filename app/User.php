@@ -39,6 +39,21 @@ class User extends Authenticatable
 
     public function likes()
     {
-        return $this->hasMany('App/Like');
+        return $this->hasMany(\App\Like::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(\App\Categories::class);
+    }
+
+    public function hargas()
+    {
+        return $this->hasMany(\App\Harga::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(\App\Review::class);
     }
 }

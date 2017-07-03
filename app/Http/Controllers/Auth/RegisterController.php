@@ -96,6 +96,8 @@ class RegisterController extends Controller
         $request['password'] = bcrypt($request['password']);
         $request['role'] = "vendor";
 
+        // dd($request->all());
+
         $this->validator($request->all());
 
         $registerVendor = \DB::transaction(function () use ($request, $uncrypt_password) {

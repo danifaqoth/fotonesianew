@@ -1,6 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div><span class="glyphicon glyphicon-user"></span> Member Name</div>
+    <div><span class="glyphicon glyphicon-user"></span>
+      {{ !empty(auth()->user()->first_name)
+                ? auth()->user()->first_name
+                : auth()->user()->metas->where('key', 'name_vendor')->first()['value'] }}
+    </div>
   </div>
   <div class="panel-body" align="center">
   <img src="/uploads/avatars/{{ $user->avatar }}" align="center" class="img-thumbnail" style="width: 80%;  ">

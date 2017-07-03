@@ -51,4 +51,37 @@ class MessageController extends Controller
 
         return view("adminlte::vendors.read_message", $data);
     }
+
+    
+
+    public function getMemberMessages()
+    {
+        $messages = Message::where('member_id', auth()->user()->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $data = [
+            'messages' => $messages
+        ];
+
+        return view("adminlte::members.message", $data);
+    }
+
+    
+
+    public function readMessageMember($id)
+    {
+        $message = new Message();
+        $messages = $message->where('member_id', auth()->user()->id)->get();
+        $message = $message->where('member_id', auth()->user()->id)->find($id);
+
+        $data = [
+            'messages' => $messages,
+            'message' => $message,
+            'member' => $message->member,
+            'vendor' => $message->vendor
+        ];
+
+        return view("adminlte::members.read_message", $data);
+    }
 }	

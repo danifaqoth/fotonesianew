@@ -28,42 +28,42 @@
 	
 				<div class="search-wrapper"> 			
 				    <div class="container">		
-				    	<form action="">
-				    		<div class="heading ">
+				    	<form method="GET" action="{{ route('vendor.search') }}">
+				    		<div class="heading ">	
 				    			<h3 class="text-center">SEARCH YOUR PHOTOGRAPHER</h3>
 				    		</div>
 				    		<div class="row">
 				    			<div class="col-md-3 col-xs-6 col-md-offset-1">
 				    				<div class="form-group">
-				    					<select class="form-control">
-				    						<option>Semua Lokasi</option>
-				    						<option>Surabaya</option>
-				    						<option>Jakarta</option>
-				    						<option>Bandung</option>
-				    						<option>Yogyakarta</option>
+				    					<select class="form-control" name="lokasi">
+				    						<option value="">Semua Lokasi</option>
+				    						<option value="surabaya">Surabaya</option>
+				    						<option value="jakarta">Jakarta</option>
+				    						<option value="bandung">Bandung</option>
+				    						<option value="yogyakarta">Yogyakarta</option>
 				    					</select>
 				    				</div>
 				    			</div>
 				    			<div class="col-md-3 col-xs-6 ">
 				    				<div class="form-group">
-				    					<select class="form-control">
-				    						<option>Kategori</option>
-				    						<option>Wedding/Prewedding</option>
-				    						<option>Produk/Iklan</option>
-				    						<option>Company Profile</option>
-				    						<option>Event</option>
+				    					<select class="form-control" name="category">
+				    						<option value="">Kategori Foto</option>
+				    						<option value="wedding">Wedding/Prewedding</option>
+				    						<option value="produk">Produk/Iklan</option>
+				    						<option value="company-profile">Company Profile</option>
+				    						<option value="event">Event</option>
 				    					</select>
 				    				</div>
 				    			</div>
 				    			<div class="col-md-3 col-xs-6">
 				    				<div class="form-group">
-				    					<select class="form-control">
-				    						<option>Kisaran Harga</option>
-				    						<option>> 1.000.000</option>
-				    						<option>> 5.000.000</option>
-				    						<option>> 10.000.000</option>
-				    						<option>> 25.000.000</option>
-				    						<option>> 50.000.000</option>
+				    					<select class="form-control" name="harga">
+				    						<option value="">Kisaran Harga</option>
+				    						<option value=">1000000">> 1.000.000</option>
+				    						<option value=">5000000">> 5.000.000</option>
+				    						<option value=">10000000">> 10.000.000</option>
+				    						<option value=">25000000">> 25.000.000</option>
+				    						<option value=">50000000">> 50.000.000</option>
 				    					</select>
 				    				</div>
 				    			</div>	

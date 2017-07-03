@@ -48,23 +48,24 @@
                           {!!Form::open(['action' => 'AlbumsController@store','method' => 'POST', 'enctype' => 'multipart/form-data'])!!} <br>
                           {{ Form::text('name','',['placeholder' => 'Album Name', 'class' => 'form-control']) }} <br>
                           {{ Form::textarea('description','',['placeholder' => 'Album Description', 'class' => 'form-control'])}} <br>
-                          <div class="row">
-                                        <div class="col-md-12">
-                                            <select class="form-control" name="category_id">
-                                              <option >Kategori Foto</option>
-                                              <option value="1">Wedding/Prewedding</option>
-                                              <option value="2">Produk/Iklan</option>
-                                              <option value="3">Company Profil</option>
-                                              <option value="4">Event</option>
-                                            </select>
-                                        </div>
-                                    </div> <br>
-                          {{ Form::file('cover_image') }} <br>
+                          
+                          <div >
+                              <select class="form-control" name="category_id">
+                                <option>Kategori Foto</option>
+                                <option value="1">Wedding/Prewedding</option>
+                                <option value="2">Produk/Iklan</option>
+                                <option value="3">Company Profile</option>
+                                <option value="4">Event</option>
+                              </select>
+                          </div>
+                          <br>
+                          {{ Form::file('cover') }} <br>
                           {{ Form::submit('submit',['class' => 'btn btn-primary']) }} &nbsp;
                           <a href="{{ route('vendor.profil') }}" class="btn btn-default ">
                             Cancel
                           </a>
                           {!! Form::close() !!}
+                          <br>
                         </div>
                       </div>  
                       

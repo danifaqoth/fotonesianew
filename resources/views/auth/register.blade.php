@@ -163,6 +163,20 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group{{ $errors->has('kategori-foto') ? ' has-error' : '' }}">
+                                        <label for="Kategori" class="col-md-4 control-label">Kategori</label>
+                                        <div class="col-md-6">
+                                          <select class="form-control" name="category_id" 
+                                          value="{{ old('category_id') }}" >
+                                            <option> Kategori Foto</option>
+                                            <option value="1">Wedding/Prewedding</option>
+                                            <option value="2">Produk/Iklan</option>
+                                            <option value="3">Company Profil</option>
+                                            <option value="4">Event</option>
+                                        </select>
+                                        </div>
+                                    </div>           
+
                                     <div class="form-group{{ $errors->has('kota-vendor') ? ' has-error' : '' }}">
                                         <label for="kota-vendor" class="col-md-4 control-label">Kota</label>
 

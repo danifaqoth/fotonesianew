@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Photo;
+use App\Like;
 use Validator;
 use Response;
 use Redirect;
 use Session;
+use Auth;
 
-
+	
 
 
 class PhotosController extends Controller
@@ -74,73 +76,56 @@ class PhotosController extends Controller
 			return redirect()->route('vendor.photos', $photo->album_id)->with('success', 'Photo Deletes');
 		}
 	}
+	public function likePhoto(Request $request)
+	{
+		$photo_id = $request['photoId'];
+		$is_like = $request['isLike'] === 'true';
+		$update = false;
+		$photo = Photo::find($photo_id);
+
+		if (!$photo) {
+			return null;
+		}
+
+		$user = Auth::user();
+		$like = $user->likes()->where('photo_id', $photo_id)->first();
+
+		if ($like) {
+			$already_like = $like->like;
+			$update = true;
+			if ($already_like == $is_like) {
+				$like->delete();
+				return null;
+			}
+		} else {
+			$like = new Like();
+		}
+
+		$like->like = $is_like;
+		$like->user_id = $user->id;
+		$like->photo_id = $photo->id;
+
+
+
+		if ($update) {
+			$like->update();
+			// return response()->json('b');
+
+		}else {
+			$like->save();
+			// return response()->json('a');
+		}
+
+		// if ($is_like)
+		// 	return response()->json('1');
+		// else
+		// 	return response()->json('0');
+		// return $is_like ?  : ;
+			// return response()->json($is_like);
+
+		return null;
+
+
+	}
     
 }
-
-// class PhotosController extends Controller 
-// {
-// 	public function index ()
-// 	{
-// 		return view('albums');
-// 	}
-
-// 	 public function create($album_id)
-//     {
-//     	return view('photos.create')->with('album_id', $album_id);
-//     }
-
-// 	public function store(Request $request)
-// 	{
-// 		//multiple all of the post data
-// 		$files = Input::file('photo');
-// 		//counting uploaded image 
-// 		$file_count = count($files);
-// 		//count how many uploaded
-// 		$uploadcount = 0;
-
-// 		foreach ($files as $file) {
-// 			$rules = array('file' => 'required');
-// 			$validator = Validator::make(array('file'=>$file), $rules);
-// 			if($validator->passes()){
-// 				$destinationPath = 'uploads';
-// 				$filename = $file->getClientOriginalName();
-// 				$upload_succes = $file->move($destinationPath, $filename);
-// 				$uploadcount ++;
-
-// 				$extension = $file->getClientOriginalExtension();
-// 				$photo = new Photo();
-// 				$photo->album_id = $request->input('album_id');
-// 				$photo->photo = $filename;
-// 				$photo->title = $request->input('title');
-// 				$photo->size = $request->file('photo');
-// 				$photo->description = $request->input('description');
-
-// 				$photo->save();
-
-
-// 				// $entry->mime = $file->getClientMimeType();
-// 				// $entry->original_filename = $filename;
-// 				// $entry->filename = $file->getFilename().'.'.$extension;
-// 				// $entry->save();
-
-// 			}
-// 		}
-
-// 		if ($uploadcount == $file_count) {
-// 			Session::flash('Succes', 'Upload succesfully');
-// 			return Redirect::to('/albums');
-// 		} else {
-// 			return Redirect::to('/albums')->withInput()->withErrors($validator);
-// 		}
-
-// 	}
-
-// 	public function show($id)
-// 	{
-// 		$photo = Photo::find($id);
-// 		return view('photos.show')->with('photo', $photo);
-// 	}
-
-
-
-// } 
