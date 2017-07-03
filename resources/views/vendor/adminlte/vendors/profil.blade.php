@@ -154,7 +154,6 @@
                                 </div>
                               </div>
                               <div role="tabpanel" class="tab-pane fade " id="info">
-
                                 <div class="inbox-body row ">
                                   <form role="form" class="form-horizontal" action="{{ route('vendor.review') }}" >
                                     {{ csrf_field() }}
@@ -170,7 +169,10 @@
                                       </div>
                                     </div>
                                   </form>
+                                  {{-- @endif --}}
 
+
+                                  <hr>
                                   @foreach ($reviews as $review)
                                   <div class="well well-lg">
                                    <p> {{ $review->content }} </p>
