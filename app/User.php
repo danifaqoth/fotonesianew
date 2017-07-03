@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function hargas()
     {
-        return $this->hasMany(\App\Harga::class);
+        return $this->hasMany(\App\harga::class);
     }
 
     public function reviews()
