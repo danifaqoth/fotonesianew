@@ -59,7 +59,10 @@
               About Me
             </div>
             <div class="panel-body" align="center">
-              {{-- Nama : <a href="{{ $member->first_name }}"></a> --}}
+            <p class="text-left">
+              Nama  : <a href="#" style="text-decoration: none; color: #888888;"><strong>{{ $user->first_name }} {{ $user->last_name }}</strong></a><br>
+              Email : <a href="#" style="text-decoration: none; color: #888888;"><strong>{{ $user->email }}</strong></a>
+            </p>
             </div>
           </div>
 

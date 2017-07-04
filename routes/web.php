@@ -66,8 +66,9 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('vendors/profil/photo',"VendorController@fprofil");
 		Route::post('vendors/profil',"VendorController@update_fprofil");
 		Route::get('vendors/messages',"MessageController@getVendorMessages")->name('vendor.message');
-		Route::get('vendors/readmessage/{id}',"MessageController@readMessageVendor")->name('vendor.readmessage');
+		Route::get('vendors/readmessage/{member_id}',"MessageController@readMessageVendor")->name('vendor.readmessage');
 		Route::post('vendors/message/sendmessage',"MessageController@sendMessageVendor")->name('vendor.sendmessage');
+		
 		//harga
 		Route::get('vendors/harga',"VendorController@harga")->name('vendor.harga');
 		Route::get('vendors/harga',"HargaController@store")->name('vendor.harga');
@@ -79,8 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('members/profil/photo',"MemberController@fprofil");
 		Route::post('members/profil',"MemberController@update_fprofil");
 		Route::get('members/messages',"MessageController@getMemberMessages")->name('member.message');
-		Route::get('members/readmessage/{id}',"MessageController@readMessageMember")->name('member.readmessage');
-		Route::post('members/profil/sendmessage',"MessageController@sendMessageMember")->name('member.sendmessage');
+		Route::get('members/readmessage/{vendor_id}',"MessageController@readMessageMember")->name('member.readmessage');
+		Route::post('members/message/sendmessage',"MessageController@sendMessageMember")->name('member.sendmessage');
 	});
 	
 

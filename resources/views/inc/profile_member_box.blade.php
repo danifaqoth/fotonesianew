@@ -16,13 +16,13 @@
   </form>
 <hr>
 
-    <p>Dans Production</p> 
+   {{--  <p>Dans Production</p> 
            
     <a href="#"><i class="fa fa-laptop" aria-hidden="true"></i> www.dans.production.com</a><br>
     <a href="#"><i class="fa fa-at" aria-hidden="true"></i> dans.production@gmail.com</a><br>               
     <h5>Media Sosial</h5>
     <a href="#"><i class="fa fa-facebook" style="font-size: 20px"> | </i></a>
     <a href="#"><i class="fa fa-youtube" style="font-size: 20px"> | </i></a>
-    <a href="#"><i class="fa fa-google-plus" style="font-size: 20px"> | </i></a>
+    <a href="#"><i class="fa fa-google-plus" style="font-size: 20px"> | </i></a> --}}
   </div>
 </div>

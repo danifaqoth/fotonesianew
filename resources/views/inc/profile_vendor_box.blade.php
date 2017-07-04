@@ -36,13 +36,15 @@
             <h4 class="modal-title" id="exampleModalLabel">INBOX</h4>
           </div>
           <div class="modal-body">
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label for="recipient-name" class="col-lg-2 control-label">Subject:</label>
                 <div class="col-lg-10">
-                  <input type="text" class="form-control" id="recipient-name" name="subject">
+                  <input type="text" class="form-control" id="recipient-name" value="-" name="subject">
+                   <input type="text" class="form-control" id="member_sender" value="1" name="member_sender">
+                   <input type="text" class="form-control" id="vendor_sender" value="0" name="vendor_sender">
                 </div>
               </div>
-              <br><br>
+              
               <div class="form-group">
                 <label for="message-text" class="col-lg-2 control-label">Message:</label>
                 <div class="col-lg-10">

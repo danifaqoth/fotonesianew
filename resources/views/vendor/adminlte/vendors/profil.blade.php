@@ -37,7 +37,6 @@
                   <li role="presentation" class="active tab-vendor"><a href="#portofolio" aria-controls="portofolio" role="tab" data-toggle="tab">Portofolio</a></li>
                   <li role="presentation" class="tab-vendor"><a href="#daftar-harga" aria-controls="daftar-harga" role="tab" data-toggle="tab">Daftar Harga</a></li>
                   <li role="presentation" class="tab-vendor"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Review</a></li>
-                  <li role="presentation" class="tab-vendor"><a href="#tentang-kami" aria-controls="tentang-kami" role="tab" data-toggle="tab">Tentang Kami</a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -144,63 +143,58 @@
                                     </div>
                                     <div id="collapseOne{{ $harga->id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                       <div class="panel-body">
-                                        <p> {{ $harga->deskripsi_paket }} </p>
+                                        <?php $deskripsi = explode(PHP_EOL, $harga->deskripsi_paket); ?>
+                                        @for($i=0; $i < count($deskripsi); $i++)
+                                        <p><?php echo $deskripsi[$i]; ?><p>
+                                          @endfor
+                                        </div>
                                       </div>
                                     </div>
+                                    @endforeach
+
+
                                   </div>
-                                  @endforeach
-
-
                                 </div>
-                              </div>
-                              <div role="tabpanel" class="tab-pane fade " id="info">
-                                <div class="inbox-body row ">
-                                  <form role="form" class="form-horizontal" action="{{ route('vendor.review') }}" >
-                                    {{ csrf_field() }}
-                                    <div class="form-group">
-                                      <div class="col-md-9 col-md-offset-1">
-                                        <textarea rows="3" cols="10" class="form-control" id="" name="content" placeholder="Review Vendor Ini"></textarea>
+                                <div role="tabpanel" class="tab-pane fade " id="info">
+                                  <div class="inbox-body row ">
+                                    <form role="form" class="form-horizontal" action="{{ route('vendor.review') }}" >
+                                      {{ csrf_field() }}
+                                      <div class="form-group">
+                                        <div class="col-md-9 col-md-offset-1">
+                                          <textarea rows="3" cols="10" class="form-control" id="" name="content" placeholder="Review Vendor Ini"></textarea>
+                                        </div>
                                       </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                      <div class="col-lg-offset-5 col-lg-10">
-                                        <button class="btn btn-send" type="submit">Review</button>
+                                      <div class="form-group">
+                                        <div class="col-lg-offset-5 col-lg-10">
+                                          <button class="btn btn-send" type="submit">Review</button>
+                                        </div>
                                       </div>
-                                    </div>
-                                  </form>
-                                  {{-- @endif --}}
+                                    </form>
 
-
-                                  <hr>
-                                  @foreach ($reviews as $review)
-                                  <div class="well well-lg">
-                                   <p> {{ $review->content }} </p>
+                                    <hr>
+                                    @foreach ($reviews as $review)
+                                    <div class="well well-lg">
+                                     <p> {{ $review->content }} </p>
+                                   </div>
+                                   @endforeach
                                  </div>
-                                 @endforeach
-                                </div>
-                              </div><!-- /.modal-content -->
+                               </div><!-- /.modal-content -->
+                             </div>
+                           </div>
+                         </div>
+                         <div class="panel-body">
 
-                             
+                         </div>
+                       </div>
+                     </div>
 
-                            
+                   </div>
+                 </div>
+               </section>
 
-                            <div role="tabpanel" class="tab-pane fade " id="tentang-kami">...</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel-body">
+               <!-- Footer -->
+               <section>
 
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </section>
-
-            <!-- Footer -->
-            <section>
-
-            </section>  
-            @endsection
+               </section>  
+               @endsection

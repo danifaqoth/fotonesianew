@@ -4,14 +4,16 @@
       <img src="/uploads/avatars/{{ $user->avatar }}" align="center" class="img-thumbnail" style="width: 80%;  "> 
     </a>
     <div class="user-name">
-      <h5><a href="#">Alireza Zare</a></h5>
-      <span><a href="#">Info.Ali.Pci@Gmail.com</a></span>
+      <h5><a href="{{ auth()->user()->role == 'vendor' 
+                ? route('vendor.profil') 
+                : route('member.profil') }}">{{ !empty(auth()->user()->first_name)
+                ? auth()->user()->first_name
+                : auth()->user()->metas->where('key', 'name_vendor')->first()['value']
+              }}</a></h5>
     </div>
   </div>
   <div class="inbox-body">
-    <a href="#myModal" data-toggle="modal"  title="Compose"    class="btn btn-compose">
-      Compose
-    </a>
+    
     <!-- Modal -->
     <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
       <div class="modal-dialog">
@@ -52,9 +54,6 @@
                 ? route('vendor.message') 
                 : route('member.message') }}"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">{{ $messages->count() }}</span></a>
 
-    </li>
-    <li>
-      <a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
     </li>
   </ul>
 
