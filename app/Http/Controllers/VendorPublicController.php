@@ -13,8 +13,6 @@ class VendorPublicController extends Controller
     	$vendor = \App\User::find($id);
         $albums = $vendor->albums;
         $review = Review::where('vendor_id', $vendor->id)->get();
-        
-
 
         $data=[
             'vendor' => $vendor,

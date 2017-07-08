@@ -7,12 +7,12 @@ use App\Review;
 
 class ReviewController extends Controller
 {
-    public function index()
-    {
-    	$reviews = Review::with('vendor')->get();
-    	$data = ['reviews' => $reviews ];
-    	return view('reviews.index', $data);
-    }
+    // public function index()
+    // {
+    // 	$reviews = Review::with('vendor')->get();
+    // 	$data = ['reviews' => $reviews ];
+    // 	return view('reviews.index', $data);
+    // }
 
   //   public function store(Request $request)
   //   {

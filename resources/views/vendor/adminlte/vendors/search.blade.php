@@ -21,7 +21,7 @@
             <!-- Begin Listing: 609 W GRAVERS LN-->
             <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
                 <div class="media">
-                    <a class="pull-left" href="javascript:;" target="_parent">
+                    <a class="pull-right" href="javascript:;" target="_parent">
                         <img alt="image" 
                             class="img-responsive img-search" 
                             src="/uploads/avatars/{{ $vendor->avatar }}"

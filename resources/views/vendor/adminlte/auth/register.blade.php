@@ -227,7 +227,6 @@
                                               <option>Pilih Kota</option>
                                               <option>Surabaya</option>
                                               <option>Jakarta</option>
-                                              <option>Bali</option>
                                               <option>Jogja</option>
                                               <option>Bandung</option>
                                             </select>
