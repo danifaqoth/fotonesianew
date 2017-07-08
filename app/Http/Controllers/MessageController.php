@@ -98,4 +98,12 @@ class MessageController extends Controller
 
 
     }
+
+    public function sendBookingMember(Request $request)
+    {
+        $request['member_id'] = auth()->user()->id;
+        $message = Message::create($request->all());
+
+        return redirect()->back()->with('success' , 'Paket Sudah di booking');
+    }
 }	

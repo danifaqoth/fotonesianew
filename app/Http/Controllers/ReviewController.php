@@ -14,17 +14,26 @@ class ReviewController extends Controller
     	return view('reviews.index', $data);
     }
 
-    public function store(Request $request)
+  //   public function store(Request $request)
+  //   {
+  //   	$request['user_id']=auth()->user()->id;
+
+  //   	$this->validate($request, [
+		// 	'user_id' => 'required|numeric',
+		// 	'content' => 'required',
+		// ]);
+
+		// Review::create($request->all());
+
+		// return redirect()->back()->withSuccess('Review Telah di Tambah');
+  //   }
+
+    public function ReviewMember(Request $request)
     {
-    	$request['user_id']=auth()->user()->id;
+        $request['member_id'] = auth()->user()->id;
+        $review = Review::create($request->all());
 
-    	$this->validate($request, [
-			'user_id' => 'required|numeric',
-			'content' => 'required',
-		]);
-
-		Review::create($request->all());
-
-		return redirect()->back()->withSuccess('Review Telah di Tambah');
+        return redirect()->back()->with('success' , 'Review di Tambah');
     }
+
 }

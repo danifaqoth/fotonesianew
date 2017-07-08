@@ -13,20 +13,21 @@
         <div class="Pengirim-message" style="margin: 0 10px">
           <h5>Message From : <strong>{{ $messages[0]->first_name }}</strong> </h5>          
         </div><hr>
-        <div class="isi-message" style="margin: 0 16px">
+        <div class="isi-message" id="isi-message" style="margin: 0 16px">
 
-        @foreach($messages as $key => $val)
-          @if ($val->vendor_sender == '0')
-            <blockquote class="read_pengirim">
-              <p>{{$val->content}}</p>
-            </blockquote>
-          @else
-             <blockquote class="blockquote-reverse read_penerima">
-              <p class="text-left">{{$val->content}}</p>
-            </blockquote>
-          @endif
-        @endforeach
+          @foreach($messages as $key => $val)
+            @if ($val->vendor_sender == '0')
+              <blockquote class="read_pengirim">
+                <p>{{$val->content}}</p>
+              </blockquote>
+            @else
+               <blockquote class="blockquote-reverse read_penerima">
+                <p class="text-left">{{$val->content}}</p>
+              </blockquote>
+            @endif
+          @endforeach
 
+        </div>
           {{-- <blockquote class="read_pengirim">
             <p>pengirim </p>
           </blockquote>
@@ -40,7 +41,6 @@
             <blockquote class="blockquote-reverse read_penerima">
               <p class="text-left"> asd</p>
             </blockquote> --}}
-        </div>
 
         <button type="button" class="btn btn-send pull-right btn-reply" data-toggle="modal" data-target="#ModalReply" data-whatever="@mdo"><i class="fa fa-reply" aria-hidden="true">
         </i>Reply</button>
@@ -88,4 +88,25 @@
 </div>
 
 <div style="margin: 20px"></div>
+@endsection
+
+@section('foot')
+<script type="text/javascript">
+  var scrolled = false;
+
+  function updateScroll(){
+      if(!scrolled){
+          var element = document.getElementById("isi-message");
+          element.scrollTop = element.scrollHeight;
+      }
+  }
+
+  $("#isi-message").on('scroll', function(){
+
+      scrolled=true;
+  });
+
+  setInterval(updateScroll(), 1000);
+
+</script>
 @endsection

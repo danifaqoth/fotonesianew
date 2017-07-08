@@ -46,5 +46,11 @@ class MemberController extends Controller
         return view('adminlte::members.profil', array('user' => Auth::user() ));
     }
 
+    public function review()
+    {
+        // $user = vendor;
+        return view("vendor.adminlte.vendors.profil");
+    }
+
 }
 

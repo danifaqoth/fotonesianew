@@ -137,8 +137,37 @@
                                     <div class="panel-heading" role="tab" id="headingOne">
                                       <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{ $harga->id }}" aria-expanded="true" aria-controls="collapseOne">
-                                          <p>{{ $harga->nama_paket }} - <strong> Rp. {{ $harga->harga_paket }} </strong></p>
+                                          {{ $harga->nama_paket }} - <strong> Rp. {{ $harga->harga_paket }} </strong>
                                         </a>
+
+
+                                        <form method="POST" class="form-booking" action="{{ route('member.sendbooking') }}">
+                                          <input type="hidden" name="vendor_id" value="{{ $vendor->id }}">
+                                          {{ csrf_field() }}
+                                          <div class="button-booking">
+                                            <div class="form-group" style="display: none;">
+                                              <label for="recipient-name" class="col-lg-2 control-label">Subject:</label>
+                                              <div class="col-lg-10">
+                                                <input type="text" class="form-control" id="recipient-name" value="-" name="subject">
+                                                <input type="text" class="form-control" id="member_sender" value="1" name="member_sender">
+                                                <input type="text" class="form-control" id="vendor_sender" value="0" name="vendor_sender">
+                                              </div>
+
+
+                                              <div class="form-group">
+                                                <label for="message-text" class="col-lg-2 control-label">Message:</label>
+                                                <div class="col-lg-10">
+                                                  <textarea class="form-control" id="message-text" rows="10" name="content">
+                                                    Halo, saya ingin memesan {{ $harga->nama_paket }}
+                                                  </textarea>
+                                                </div>
+                                              </div>
+                                              <br><br><br>
+                                            </div>
+                                            <button type="submit" class="btn btn-send">Booking</button>
+                                          </div>
+                                        </form>
+
                                       </h4>
                                     </div>
                                     <div id="collapseOne{{ $harga->id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
@@ -150,6 +179,9 @@
                                         </div>
                                       </div>
                                     </div>
+
+                                    
+
                                     @endforeach
 
 
@@ -157,27 +189,25 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade " id="info">
                                   <div class="inbox-body row ">
-                                    <form role="form" class="form-horizontal" action="{{ route('vendor.review') }}" >
+
+                                    <form method="POST" action="{{ route('member.review') }}">
+                                      <input type="hidden" name="vendor_id" value="{{ $vendor->id }}">
                                       {{ csrf_field() }}
-                                      <div class="form-group">
-                                        <div class="col-md-9 col-md-offset-1">
-                                          <textarea rows="3" cols="10" class="form-control" id="" name="content" placeholder="Review Vendor Ini"></textarea>
+                                      <div class="text-review">
+                                        <div class="form-group">
+                                          <div class="col-lg-offset-1 col-lg-9">
+                                            <textarea class="form-control" id="message-text" rows="5" name="content"></textarea>
+                                          </div>
                                         </div>
                                       </div>
-
-                                      <div class="form-group">
-                                        <div class="col-lg-offset-5 col-lg-10">
-                                          <button class="btn btn-send" type="submit">Review</button>
-                                        </div>
-                                      </div>
+                                        <button type="submit" class="btn btn-send button-review">Review</button>
                                     </form>
-
-                                    <hr>
-                                    @foreach ($reviews as $review)
+                                    <br><br><br>
+                                  @foreach ($reviews as $review)
                                     <div class="well well-lg">
                                      <p> {{ $review->content }} </p>
                                    </div>
-                                   @endforeach
+                                  @endforeach
                                  </div>
                                </div><!-- /.modal-content -->
                              </div>

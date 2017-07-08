@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReviewsTable extends Migration
+class DropUserIdFromReviews extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('member_id');
-            $table->text('content');
-            $table->timestamps();
-        });
+        Schema::table('reviews', function($table) {
+        $table->dropColumn('user_id');
+        $table->dropColumn('member_id');
+    });
     }
 
     /**
@@ -29,6 +26,9 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::table('reviews', function($table) {
+        $table->integer('user_id');
+        $table->integer('member_id');
+    });
     }
 }

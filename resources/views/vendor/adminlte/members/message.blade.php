@@ -24,7 +24,7 @@
                 {{ $message->nama }}
               </a>
             </td>
-            <td class="view-message ">{{ str_limit($message->content, 60) }}</td>
+            <td class="view-message ">{{-- {{ str_limit($message->content, 60) }} --}}</td>
             <td class="view-message  text-right">{{ $message->created_at->diffForHumans() }}</td>
           </tr>
           @endforeach

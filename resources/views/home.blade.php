@@ -281,11 +281,11 @@
 
 	<div style="margin: 50px 0"></div>
 
-	<!-- Foto Favorit -->
+	{{-- <!-- Foto Favorit -->
 	<section>
 		<div class="container-fluid">
 		<h3 class="text-center">Photo Popular</h3>
-			<div class="row">
+			<div class="row bawah-bottom">
 				<div class="col-md-3 col-fav"><img src="image/2.jpg" alt="" class="favorit"></div>
 				<div class="col-md-3 col-fav"><img src="image/3.jpg" alt="" class="favorit"></div>
 				<div class="col-md-3 col-fav"><img src="image/4.jpg" alt="" class="favorit"></div>
@@ -294,9 +294,72 @@
 				<div class="col-md-3 col-fav"><img src="image/7.jpg" alt="" class="favorit"></div>
 				<div class="col-md-3 col-fav"><img src="image/2.jpg" alt="" class="favorit"></div>
 				<div class="col-md-3 col-fav"><img src="image/3.jpg" alt="" class="favorit"></div>
-				<div class="col-md-3 col-fav"><img src="image/4.jpg" alt="" class="favorit"></div>
 			</div>
 		</div>	
 	</section>
-	<!-- End Foto Favorit -->
+	<!-- End Foto Favorit --> --}}
+
+	<div class="container-fluid">
+		<div class="col-md-4">
+			<div class="thumbnail-fav">
+				<a href="image/5.jpg" target="_blank">
+					<div style="background-image: url('image/slide1.jpg')" class="photo-fav"></div>
+					<div class="caption-fav">
+						<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail-fav">
+				<a href="image/5.jpg" target="_blank">
+					<div style="background-image: url('image/slide2.jpg')" class="photo-fav"></div>
+					<div class="caption-fav">
+						<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail-fav">
+				<a href="image/5.jpg" target="_blank">
+					<div style="background-image: url('image/slide1.jpg')" class="photo-fav"></div>
+					<div class="caption-fav">
+						<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail-fav">
+				<a href="image/5.jpg" target="_blank">
+					<div style="background-image: url('image/slide1.jpg')" class="photo-fav"></div>
+					<div class="caption-fav">
+						<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail-fav">
+				<a href="image/5.jpg" target="_blank">
+					<div style="background-image: url('image/slide1.jpg')" class="photo-fav"></div>
+					<div class="caption-fav">
+						<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail-fav">
+				<a href="image/5.jpg" target="_blank">
+					<div style="background-image: url('image/slide1.jpg')" class="photo-fav"></div>
+					<div class="caption-fav">
+						<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
 @endsection

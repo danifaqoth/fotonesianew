@@ -36,8 +36,10 @@ Route::get('vendors/profil/{id}','VendorPublicController@profil')
 	->name('vendorpublic.profil');
 
 //review
-Route::get('vendors/review',"VendorController@review")->name('vendor.review');
-Route::get('vendors/review',"ReviewController@store")->name('vendor.review');
+// Route::get('vendors/review',"VendorController@review")->name('vendor.review');
+// Route::get('vendors/review',"ReviewController@store")->name('vendor.review');
+
+
 
 
 // AJAX
@@ -82,6 +84,9 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('members/messages',"MessageController@getMemberMessages")->name('member.message');
 		Route::get('members/readmessage/{vendor_id}',"MessageController@readMessageMember")->name('member.readmessage');
 		Route::post('members/message/sendmessage',"MessageController@sendMessageMember")->name('member.sendmessage');
+		Route::post('members/message/booking',"MessageController@sendBookingMember")->name('member.sendbooking');
+		Route::post('members/review',"ReviewController@reviewMember")->name('member.review');
+		Route::get('members/review',"ReviewController@review")->name('member.review');
 	});
 	
 

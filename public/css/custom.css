@@ -493,3 +493,47 @@ a {
 .clr-535353 {
     color: #535353;
 }
+
+.thumbnail-fav {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
+.caption-fav {
+    padding: 9px;
+    color: #333;
+}
+
+.photo-fav {
+    border: 10px;
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.form-booking {
+    margin-bottom: -6px;
+    margin-left: 740px;
+    margin-right: 74px;
+    margin-top: -24px;
+}
+
+
+.button-review {
+    margin-top: 39px;
+    /*margin-left: 10px;*/
+}
+
+.text-review {
+
+}

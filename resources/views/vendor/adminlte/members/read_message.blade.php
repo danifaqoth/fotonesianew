@@ -11,7 +11,7 @@
         <div class="Pengirim-message" style="margin: 0 10px">
           <h5>Message From : <strong>{{ $messages[0]->email }}</strong> </h5>          
         </div><hr>
-        <div class="isi-message" style="margin: 0 10px">
+        <div class="isi-message" id="isi-message" style="margin: 0 10px">
          @foreach($messages as $key => $val)
           @if ($val->member_sender == '0')
             <blockquote class="read_pengirim">
@@ -72,4 +72,25 @@
 </div>
 
 <div style="margin: 20px"></div>
+@endsection
+
+@section('foot')
+<script type="text/javascript">
+  var scrolled = false;
+
+  function updateScroll(){
+      if(!scrolled){
+          var element = document.getElementById("isi-message");
+          element.scrollTop = element.scrollHeight;
+      }
+  }
+
+  $("#isi-message").on('scroll', function(){
+
+      scrolled=true;
+  });
+
+  setInterval(updateScroll(), 1000);
+
+</script>
 @endsection

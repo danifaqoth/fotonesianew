@@ -35,7 +35,6 @@
                     <li role="presentation" class="active tab-vendor"><a href="#portofolio" aria-controls="portofolio" role="tab" data-toggle="tab">Portofolio</a></li>
                     <li role="presentation" class="tab-vendor"><a href="#daftar-harga" aria-controls="daftar-harga" role="tab" data-toggle="tab">Daftar Harga</a></li>
                     <li role="presentation" class="tab-vendor"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info/ulasan</a></li>
-                    <li role="presentation" class="tab-vendor"><a href="#tentang-kami" aria-controls="tentang-kami" role="tab" data-toggle="tab">Tentang Kami</a></li>
                   </ul>
 
                   <!-- Tab panes -->

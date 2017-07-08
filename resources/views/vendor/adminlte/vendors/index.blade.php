@@ -29,8 +29,8 @@
 					<table class="table table-hover">
 						<thead>	
 							<th>ID</th>
-							<th>First Name</th>
-							<th>Last Name</th>
+							{{-- <th>First Name</th>
+							<th>Last Name</th> --}}
 							<th>Nama Vendor</th>
 							<th>Email</th>
 							<th>Kota</th>
@@ -42,8 +42,8 @@
 							@foreach ($vendors as $key => $vendor)
 							<tr>
 								<td>{{ $key++ + 1 }}</td>
-								<td>{{ $vendor->first_name }}</td>
-								<td>{{ $vendor->last_name }}</td>
+								{{-- <td>{{ $vendor->first_name }}</td>
+								<td>{{ $vendor->last_name }}</td> --}}
 								<td>{{ $vendor->metas->where('key', 'name_vendor')->first()['value'] }}</td>
 								<td>{{ $vendor->email }}</td>
 								<td>{{ $vendor->metas->where('key', 'kota')->first()['value'] }}</td>

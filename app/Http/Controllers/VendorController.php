@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Album;
 use App\User;
 use App\Usermeta;
+use App\Review;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Storage;
@@ -41,12 +42,13 @@ class VendorController extends Controller
     {
         $user = auth()->user();
         $albums = Album::where('user_id', $user->id)->with('photos')->get();
+        $review = Review::where('vendor_id', $user->id);
 
         $data = [
             'albums' => $albums,
             'vendor' => $user,
             'hargas' => $user->hargas,
-            'reviews' => $user->reviews,
+            'reviews' => $review,
         ];
 
     	return view("adminlte::vendors.profil", $data);
@@ -70,11 +72,11 @@ class VendorController extends Controller
         return view("vendor.adminlte.vendors.harga");
     }
 
-    public function review()
-    {
-        // $user = vendor;
-        return view("vendor.adminlte.vendors.harga");
-    }
+    // public function review()
+    // {
+    //     // $user = vendor;
+    //     return view("vendor.adminlte.vendors.harga");
+    // }
 
     public function getPhotos($album_id)
     {

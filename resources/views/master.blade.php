@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/custom.css">
 
+
 	@yield("head")
 
 </head>
@@ -95,8 +96,10 @@
     </script>
     
     <script type="text/javascript" src="/js/custom.js"></script>
+    
    
     @yield('foot')
        
 </body>
 </html>
+

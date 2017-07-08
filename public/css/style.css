@@ -414,9 +414,13 @@ Profile Vendor
 	border-color: rgba(122, 134, 148, 0.22);
 	border-style: solid;
 	border-radius: 4px;
-	margin: 0 24px 25px 20px;
+	/*margin: 0 24px 25px 20px;*/
     padding: 0;
-    width: 30%;
+    /*width: 30%;*/
+}
+
+.bawah-bottom {
+	margin-bottom: 45px;
 }
 
 .porto-vendor {
@@ -590,3 +594,5 @@ menjadi-vendor.php
         max-width: 180px;
     }
 }
+
+
