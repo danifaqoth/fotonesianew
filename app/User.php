@@ -42,10 +42,10 @@ class User extends Authenticatable
         return $this->hasMany(\App\Like::class);
     }
 
-    public function category()
-    {
-        return $this->belongsTo(\App\Categories::class);
-    }
+    // public function category()
+    // {
+    //     return $this->belongsTo(\App\Categories::class);
+    // }
 
     public function hargas()
     {

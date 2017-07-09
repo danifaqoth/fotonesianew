@@ -199,13 +199,25 @@ class VendorController extends Controller
             });
         }
 //      category
-        // if ($category = $request->category) {
-        //     $vendors = $vendors->where(function ($query) use ($category) {
-        //         $query->whereHas('category', function ($q) use ($category) {
-        //             $q->where('slug', 'LIKE', "%$category%");
-        //         });
-        //     });
-        // } 
+        if ($category = $request->category) {
+            $vendors = $vendors->where(function ($query) use ($category) {
+                $query->whereHas('albums', function ($album) use ($category) {
+                    $album->whereHas('category', function ($q) use ($category) {
+                        $q->where('slug', 'LIKE', "%$category%");
+                    });
+                });
+            });
+        } 
+//      harga
+        if ($harga = $request->harga) {
+            $vendors = $vendors->where(function ($query) use ($harga) {
+                $query->whereHas('hargas', function ($h) use ($harga) {
+                    $realHarga = substr($harga, 1);
+                    $operator = str_replace($realHarga, '', $harga);
+                    $h->where('harga_paket', $operator, $realHarga);
+                });
+            });
+        } 
 
 
         $vendors = $vendors->get();

@@ -17,4 +17,9 @@ class Album extends Model
 	{
 		return $this->hasMany('App\Photo');
 	}
+
+	public function category()
+	{
+		return $this->belongsTo(\App\Category::class);
+	}
 }

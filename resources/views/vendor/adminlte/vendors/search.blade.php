@@ -57,11 +57,11 @@
 
                         
 
-                        <a href="javascript:;" target="_parent">{{ $name_vendor }}<small class="pull-right">Rp2.000.000</small></a></h4>
+                        <a href="{{ route('vendorpublic.profil', $vendor->id) }}" target="_parent">{{ $name_vendor }}<small class="pull-right">{{-- Rp2.000.000 --}}</small></a></h4>
 
                         <h5>{{ $lokasi_vendor }}</h5>
 
-                        <p class="hidden-xs">Menerima jasa foto dan video dokumentasi untuk acara pernikahan anda </p>
+                       {{--  <p class="hidden-xs">Menerima jasa foto dan video dokumentasi untuk acara pernikahan anda </p> --}}
                     </div>
                 </div>
             </div><!-- End Listing-->

@@ -59,11 +59,10 @@
 				    				<div class="form-group">
 				    					<select class="form-control" name="harga">
 				    						<option value="">Kisaran Harga</option>
+				    						<option value="<1000000">< 1.000.000</option>
 				    						<option value=">1000000">> 1.000.000</option>
-				    						<option value=">5000000">> 5.000.000</option>
 				    						<option value=">10000000">> 10.000.000</option>
 				    						<option value=">25000000">> 25.000.000</option>
-				    						<option value=">50000000">> 50.000.000</option>
 				    					</select>
 				    				</div>
 				    			</div>	
