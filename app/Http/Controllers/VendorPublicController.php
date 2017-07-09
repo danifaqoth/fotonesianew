@@ -14,6 +14,7 @@ class VendorPublicController extends Controller
         $albums = $vendor->albums;
         $review = Review::where('vendor_id', $vendor->id)->get();
 
+
         $data=[
             'vendor' => $vendor,
             'albums' => $albums,

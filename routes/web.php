@@ -58,6 +58,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::group(['middleware' => 'superadmin'], function () {
 		Route::get('/members',"MemberController@index")->name("member.index");
 		Route::get('/vendors',"VendorController@index")->name("vendor.index");
+
+	//User
+		Route::post('/edit/members/{id}',"MemberController@update")->name('member.update');
+		Route::delete('/delete/members/{id}',"MemberController@destroy")->name('member.destroy');
+		Route::post('/edit/vendors/{id}',"VendorController@update")->name('vendor.update');
+		Route::delete('/delete/vendors/{id}',"VendorController@destroy")->name('vendor.destroy');
+
+
 	});
 
 	// Vendor

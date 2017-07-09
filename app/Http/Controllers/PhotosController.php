@@ -127,5 +127,14 @@ class PhotosController extends Controller
 
 
 	}
+	// public function likeCount()
+	// {
+	// 	$count = Like::join('photos', 'likes.photo_id', '=', 'photos.id')
+	// 				->select('*', 'count(photo_id) as maks')
+	// 				->groupBy('photo_id')
+	// 				->get();
+
+		
+	// }
     
 }

@@ -9,6 +9,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Like;
+use DB;
 
 /**
  * Class HomeController
@@ -33,7 +35,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $count = Like::join('photos', 'likes.photo_id', '=', 'photos.id')
+                    ->join('albums', 'photos.album_id', '=', 'albums.id')
+                    ->join('usermetas', 'albums.user_id', '=', 'usermetas.user_id')
+                    ->select(DB::raw('*, albums.user_id as vendor_id, count(likes.photo_id) as like_count'))
+                    ->where('usermetas.key', 'name_vendor')
+                    ->groupBy('likes.photo_id')
+                    ->orderBy('like_count', 'desc')
+                    ->limit(6)
+                    ->get();
+
+        // dd($count);
+
+        return view('home', ['photo' => $count]);
     }
 
     public function dashboard()

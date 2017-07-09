@@ -189,7 +189,7 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade " id="info">
                                   <div class="inbox-body row ">
-
+                                  @if(auth()->check() && Auth::user()->role == "member")
                                     <form method="POST" action="{{ route('member.review') }}">
                                       <input type="hidden" name="vendor_id" value="{{ $vendor->id }}">
                                       {{ csrf_field() }}
@@ -202,10 +202,13 @@
                                       </div>
                                         <button type="submit" class="btn btn-send button-review">Review</button>
                                     </form>
+                                  @endif
+
                                     <br><br><br>
                                   @foreach ($reviews as $review)
                                     <div class="well well-lg">
                                      <p> {{ $review->content }} </p>
+                                     <h6 class="text-right text-capitalize"> <strong>{{ $review->member->first_name }} {{ $review->member->last_name }}</strong></h6>
                                    </div>
                                   @endforeach
                                  </div>

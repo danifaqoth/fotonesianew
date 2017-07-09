@@ -22,15 +22,6 @@ class VendorController extends Controller
     			->orderBy('created_at', 'desc')
     			->get();
 
-    	// foreach ($vendors as $key => $vendor) {
-    	// 	if (!$vendor->metas->isEmpty()) {
-    	// 		foreach ($vendor->metas as $meta_key => $meta_value) {
-    	// 			// $vendor['metas']['test'] = 'hello';
-    	// 			$vendor['metas'][$meta_key] = $meta_value;
-    	// 		}
-    	// 	}
-    	// }
-
     	$data = [
     		'vendors' => $vendors
     	];
@@ -38,11 +29,65 @@ class VendorController extends Controller
     	return view("adminlte::vendors.index", $data);
     }
 
+    public function update(Request $request, $id)       
+    {
+        if(empty($request->password))
+        {
+            // dd($id);
+            $vendors = \App\User::find($id);           
+            $vendors->email = $request->email;
+            $vendors->save();
+
+            $nama = Usermeta::where('key', 'name_vendor')
+                            ->where('user_id', $id)
+                            ->first();
+            $nama->value = $request->nama;
+            $nama->save();
+
+            $kota = Usermeta::where('key', 'kota')
+                            ->where('user_id', $id)
+                            ->first();
+            $kota->value = $request->kota;
+            $kota->save();
+        }
+        else
+        {
+            $vendors = \App\User::find($id);
+            $vendors->email = $request->email;
+            $vendors->password = bcrypt($request->password);
+            $vendors->save();
+
+            $nama = Usermeta::where('key', 'name_vendor')
+                            ->where('user_id', $id)
+                            ->first();
+            $nama->value = $request->nama;
+            $nama->save();
+
+            $kota = Usermeta::where('key', 'kota')
+                            ->where('user_id', $id)
+                            ->first();
+            $kota->value = $request->kota;
+            $kota->save();
+        }
+
+        return redirect()->back();
+    }
+
+    public function destroy($id)
+    {
+        $vendors = \App\User::find($id);
+
+        $vendors->delete();
+
+        return redirect()->back();
+        //
+    }
+
     public function profil()
     {
         $user = auth()->user();
         $albums = Album::where('user_id', $user->id)->with('photos')->get();
-        $review = Review::where('vendor_id', $user->id);
+        $review = Review::where('vendor_id', $user->id)->get();
 
         $data = [
             'albums' => $albums,

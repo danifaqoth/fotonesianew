@@ -300,17 +300,20 @@
 	<!-- End Foto Favorit --> --}}
 
 	<div class="container-fluid">
+		@foreach($photo as $foto)
 		<div class="col-md-4">
 			<div class="thumbnail-fav">
-				<a href="image/5.jpg" target="_blank">
-					<div style="background-image: url('image/slide1.jpg')" class="photo-fav"></div>
+				<a href="{{ route('vendorpublic.profil', $foto->vendor_id) }}" target="_blank">
+					<div style="background-image: url('/storage/photos/{{ $foto->album_id }}/{{ $foto->photo }}')" class="photo-fav"></div>
 					<div class="caption-fav">
-						<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+						<p>{{ $foto->value }}</p>
+						<p>{{ $foto->like_count }}</p>
 					</div>
 				</a>
 			</div>
 		</div>
-		<div class="col-md-4">
+		@endforeach
+		{{-- <div class="col-md-4">
 			<div class="thumbnail-fav">
 				<a href="image/5.jpg" target="_blank">
 					<div style="background-image: url('image/slide2.jpg')" class="photo-fav"></div>
@@ -359,7 +362,7 @@
 					</div>
 				</a>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 
 @endsection
