@@ -5,7 +5,7 @@
 Route::get('/',"HomeController@index");
 
 // sementara | aslinya harus login
-Route::get('/dashboard',"HomeController@dashboard");
+Route::get('/dashboard',"HomeController@dashboard")->name('pemilik');
 
 //search
 Route::get('/search',"VendorController@search")->name('vendor.search');

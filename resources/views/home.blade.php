@@ -216,16 +216,16 @@
 					    <li data-target="#fade-quote-carousel" data-slide-to="0"></li>
 					    <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
 					    <li data-target="#fade-quote-carousel" data-slide-to="2" class="active"></li>
-	                    <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
+	                    {{-- <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
 	                    <li data-target="#fade-quote-carousel" data-slide-to="4"></li>
-	                    <li data-target="#fade-quote-carousel" data-slide-to="5"></li>
+	                    <li data-target="#fade-quote-carousel" data-slide-to="5"></li> --}}
 					  </ol>
 					 
 					  <div class="carousel-inner">
 					    <div class="item">
 	                        <div class="profile-circle" style="background-image: url('image/2.jpg');"></div>
 					    	<blockquote class="block">
-					    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+					    		<p>Saya menemukan jasa fotografer untuk wedding saya di fotonesia sangat membantu, terima kasih fotonesia</p>
 					    		<br>
 					    		<h5 style="margin: 0"><em>"Alhamdani & Eva Angraini"</em></h5>
 					    	</blockquote>	
@@ -233,20 +233,20 @@
 					    <div class="item">
 	                        <div class="profile-circle" style="background-image: url('image/3.jpg');"></div>
 					    	<blockquote class="block">
-					    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+					    		<p>Momen acara saya sangat bagus karena fotografer yang saya cari lewat Fotonesia</p>
 					    		<br>
-					    		<h5 style="margin: 0"><em>"Alhamdani & Eva Angraini"</em></h5>
+					    		<h5 style="margin: 0"><em>"Juleha & Soleh"</em></h5>
 					    	</blockquote>
 					    </div>
 					    <div class="active item">
 	                        <div class="profile-circle" style="background-image: url('image/4.jpg');"></div>
 					    	<blockquote class="block">
-					    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+					    		<p>saya jadi gak buang waktu untuk cari fotografer, soalnya semua udah lengkap di fotonesia</p>
 					    		<br>
-					    		<h5 style="margin: 0"><em>"Alhamdani & Eva Angraini"</em></h5>
+					    		<h5 style="margin: 0"><em>"Galih & Ratna"</em></h5>
 					    	</blockquote>
 					    </div>
-	                    <div class="item">
+	                    {{-- <div class="item">
 	                        <div class="profile-circle" style="background-image: url('image/5.jpg');"></div>
 	    			    	<blockquote class="block">
 					    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
@@ -269,7 +269,7 @@
 					    		<br>
 					    		<h5 style="margin: 0"><em>"Alhamdani & Eva Angraini"</em></h5>
 					    	</blockquote>
-					    </div>
+					    </div> --}}
 					  </div>
 					</div>
 				</div>							
@@ -299,14 +299,15 @@
 	<!-- End Foto Favorit --> --}}
 
 	<div class="container-fluid">
+	<h2 class="text-center">Photo Popular</h2><hr>
 		@foreach($photo as $foto)
 		<div class="col-md-4">
 			<div class="thumbnail-fav">
 				<a href="{{ route('vendorpublic.profil', $foto->vendor_id) }}" target="_blank">
 					<div style="background-image: url('/storage/photos/{{ $foto->album_id }}/{{ $foto->photo }}')" class="photo-fav"></div>
 					<div class="caption-fav">
-						<p>{{ $foto->value }}</p>
-						<p>{{ $foto->like_count }}</p>
+						<h4 class="text-center text-capitalize">{{ $foto->value }}</h4>
+						<h5 class="text-center"><em>{{ $foto->like_count }} Likes</em></h5>
 					</div>
 				</a>
 			</div>

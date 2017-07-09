@@ -49,9 +49,9 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
-                                    <label>
+                                    {{-- <label>
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
+                                    </label> --}}
                                 </div>
                             </div>
                         </div>
@@ -62,9 +62,9 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
-                                </a>
+                                </a> --}}
                                 <br><hr>
                                 <a class="btn btn-link" href="register">Register Member/Vendor</a>
                             </div>

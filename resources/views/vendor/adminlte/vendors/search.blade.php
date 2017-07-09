@@ -10,14 +10,14 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Search Result</h1>
-        <p>Fotografer </p>
+        <p>Vendor </p>
       </div>
     </div>
     
     <div class="row">
         @foreach ($vendors as $vendor)
         
-        <div class="col-sm-6"> 
+        <div class="col-sm-4"> 
             <!-- Begin Listing: 609 W GRAVERS LN-->
             <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
                 <div class="media">

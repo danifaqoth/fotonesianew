@@ -26,6 +26,9 @@
 					</div>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
+					@if(auth()->check() && Auth::user()->role == "pemilik")
+					<li><a href="{{ route('pemilik') }}"><i class="fa fa-btn fa-address-book"></i></a></li>
+					@endif
 					@if (auth()->check())
 						<li>
 							<a href="{{ auth()->user()->role == 'vendor' 
